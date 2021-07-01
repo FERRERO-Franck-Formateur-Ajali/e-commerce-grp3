@@ -28,12 +28,12 @@ class Commentaire
     private $dateheure;
 
     /**
-     * @ORM\ManyToOne(targetEntity=client::class, inversedBy="commentaires")
+     * @ORM\ManyToOne(targetEntity=Client::class, inversedBy="commentaires")
      */
     private $client;
 
     /**
-     * @ORM\ManyToOne(targetEntity=article::class, inversedBy="commentaires")
+     * @ORM\ManyToOne(targetEntity=Article::class, inversedBy="commentaires")
      */
     private $article;
 

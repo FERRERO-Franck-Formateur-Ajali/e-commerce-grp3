@@ -65,18 +65,18 @@ class Article
     private $promotion;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Souscategorie::class, inversedBy="articles")
+     * @ORM\ManyToOne(targetEntity=Souscategorie::class, inversedBy="Articles")
      * @ORM\JoinColumn(nullable=false)
      */
     private $souscategorie;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Panier::class, inversedBy="article")
+     * @ORM\ManyToOne(targetEntity=Panier::class, inversedBy="Article")
      */
     private $panier;
 
     /**
-     * @ORM\OneToMany(targetEntity=Commentaire::class, mappedBy="article")
+     * @ORM\OneToMany(targetEntity=Commentaire::class, mappedBy="Article")
      */
     private $commentaires;
 

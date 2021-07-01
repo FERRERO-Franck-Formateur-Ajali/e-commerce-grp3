@@ -43,7 +43,7 @@ class Adresselivraison
     private $ville;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Client::class, inversedBy="adresselivraisons")
+     * @ORM\ManyToOne(targetEntity=Client::class, inversedBy="Adresselivraisons")
      */
     private $client;
 

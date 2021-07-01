@@ -33,7 +33,7 @@ class Commande
     private $panier;
 
     /**
-     * @ORM\ManyToOne(targetEntity=client::class, inversedBy="commandes")
+     * @ORM\ManyToOne(targetEntity=client::class, inversedBy="Commandes")
      */
     private $client;
 

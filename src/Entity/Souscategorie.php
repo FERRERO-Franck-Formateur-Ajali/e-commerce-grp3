@@ -30,7 +30,7 @@ class Souscategorie
     private $statut;
 
     /**
-     * @ORM\ManyToOne(targetEntity=categorie::class, inversedBy="souscategories")
+     * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="souscategories")
      * @ORM\JoinColumn(nullable=false)
      */
     private $categorie;

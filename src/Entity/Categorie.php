@@ -30,7 +30,7 @@ class Categorie
     private $statut;
 
     /**
-     * @ORM\OneToMany(targetEntity=Souscategorie::class, mappedBy="categorie")
+     * @ORM\OneToMany(targetEntity=Souscategorie::class, mappedBy="Categorie")
      */
     private $souscategories;
 
