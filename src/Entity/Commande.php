@@ -78,12 +78,12 @@ class Commande
         return $this;
     }
 
-    public function getClient(): ?Client
+    public function getClient(): ?client
     {
         return $this->client;
     }
 
-    public function setClient(?Client $client): self
+    public function setClient(?client $client): self
     {
         $this->client = $client;
 

@@ -3,8 +3,19 @@
 {% block title %}Page Créer un compte{% endblock %}
 
 {% block body %}
-{{ form_start(form) }}
-{{ form_widget(form) }}
-<button rtype="submit" class="btn btn-primary">enregistrer</button>
-{{ form_end(form) }}
+<div class="container">
+	<div class="row">
+            {{ form_start(formUser) }}
+            <div class="col-sm-4 mx-auto">
+            {{ form_widget(formUser) }}
+            </div>
+            {{ form_end(formUser) }}
+            {{ form_start(formClient) }}
+            <div class="col-sm-4 mx-auto">
+            {{ form_widget(formClient) }}
+            </div>
+            {{ form_end(formClient) }}
+            <button rtype="submit" class="btn btn-primary">enregistrer</button>
+    </div>
+</div>
 {% endblock %}

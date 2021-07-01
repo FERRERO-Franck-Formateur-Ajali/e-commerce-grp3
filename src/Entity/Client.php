@@ -40,27 +40,31 @@ class Client
     private $user;
 
     /**
+<<<<<<< HEAD
      * @ORM\OneToMany(targetEntity=Adresselivraison::class, mappedBy="Client")
+=======
+     * @ORM\OneToMany(targetEntity=Adresselivraison::class, mappedBy="client")
+>>>>>>> 996d2c33c1a95302acbdcbabcc738e291b094345
      */
     private $adresselivraisons;
 
     /**
-     * @ORM\OneToMany(targetEntity=Adressefacturation::class, mappedBy="Client")
+     * @ORM\OneToMany(targetEntity=Adressefacturation::class, mappedBy="client")
      */
     private $adressefacturations;
 
     /**
-     * @ORM\OneToOne(targetEntity=Panier::class, mappedBy="Client", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=Panier::class, mappedBy="client", cascade={"persist", "remove"})
      */
     private $panier;
 
     /**
-     * @ORM\OneToMany(targetEntity=Commande::class, mappedBy="Client")
+     * @ORM\OneToMany(targetEntity=Commande::class, mappedBy="client")
      */
     private $commandes;
 
     /**
-     * @ORM\OneToMany(targetEntity=Commentaire::class, mappedBy="Client")
+     * @ORM\OneToMany(targetEntity=Commentaire::class, mappedBy="client")
      */
     private $commentaires;
 

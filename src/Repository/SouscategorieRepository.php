@@ -22,7 +22,7 @@ class SouscategorieRepository extends ServiceEntityRepository
     // /**
     //  * @return Souscategorie[] Returns an array of Souscategorie objects
     //  */
-    
+    /*
     public function findByExampleField($value)
     {
         return $this->createQueryBuilder('s')
