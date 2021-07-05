@@ -30,7 +30,7 @@ class Panier
     private $article;
 
     /**
-     * @ORM\OneToOne(targetEntity=client::class, inversedBy="panier", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=Client::class, inversedBy="panier", cascade={"persist", "remove"})
      */
     private $client;
 
