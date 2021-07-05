@@ -3,14 +3,9 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Article;
-use App\Entity\Souscategorie;
 use App\Repository\SouscategorieRepository;
-
-use Doctrine\Persistence\ObjectManager;
-
 class FakerController extends AbstractController
 {
     /**
