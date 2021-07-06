@@ -15,6 +15,7 @@ class ClientType extends AbstractType
             ->add('nom')
             ->add('prenom')
             ->add('phone')
+            // ->add('user', UserType::class);
         ;
     }
 
