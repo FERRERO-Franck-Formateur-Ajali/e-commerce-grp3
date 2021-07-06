@@ -35,6 +35,59 @@ class ArticleRepository extends ServiceEntityRepository
         ;
     }
     */
+        // /**
+    //  * @return Article[] Returns an array of Article objects
+    //  */
+    
+    public function findTitle($value)
+    {
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.nom = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
+            // /**
+    //  * @return Article[] Returns an array of Article objects
+    //  */
+    
+    public function findColor($value)
+    {
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.couleur = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
+            // /**
+    //  * @return Article[] Returns an array of Article objects
+    //  */
+    
+    public function findDescription($value)
+    {
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.description = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
+                // /**
+    //  * @return Article[] Returns an array of Article objects
+    //  */
+    
+    public function findPrice($value)
+    {
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.prix = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
+
 
     /*
     public function findOneBySomeField($value): ?Article
