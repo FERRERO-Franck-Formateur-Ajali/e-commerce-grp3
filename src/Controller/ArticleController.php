@@ -23,8 +23,7 @@ class ArticleController extends AbstractController
             'controller_name' => 'ArticleController',
             'article' => $article,
             'commentaire' => $commentaire,
-        
-
+    
         ]);
     }
 }

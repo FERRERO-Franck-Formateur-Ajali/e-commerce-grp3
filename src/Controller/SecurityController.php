@@ -50,6 +50,7 @@ class SecurityController extends AbstractController
         // creation du formulaire en utilisant le form symfony
         $formClient = $this->createForm(ClientType::class, $client);
         $formUser = $this->createForm(UserType::class, $user);
+        // $tableauObservation = $this->getDoctrine()->getRepository(TableauObservationMainCourante::class)->findBy(['Entete' => $declarationMainCourante->getId()]);
         // request gere ce qui a ete envoyer dans le formulaire
         $formClient->handleRequest($request);
         $formUser->handleRequest($request);
