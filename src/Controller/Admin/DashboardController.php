@@ -3,6 +3,12 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Article;
+use App\Entity\Client;
+use App\Entity\Categorie;
+use App\Entity\Souscategorie;
+use App\Entity\Commande;
+use App\Entity\Panier;
+use App\Entity\Commentaire;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -29,6 +35,14 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linktoDashboard('Dashboard', 'fa fa-home');
-        yield MenuItem::linkToCrud('Article', 'fas fa-list', Article::class);
+        yield MenuItem::linkToCrud('Client', 'fas fa-address-card', Client::class);
+        yield MenuItem::linkToCrud('Categorie', 'fas fa-clipboard-list', Categorie::class);
+        yield MenuItem::linkToCrud('Marque', 'fas fa-clipboard-list', Souscategorie::class);
+        yield MenuItem::linkToCrud('Article', 'fas fa-tags', Article::class);
+        yield MenuItem::linkToCrud('Commande', 'fas fa-list', Commande::class);
+        yield MenuItem::linkToCrud('Panier', 'fas fa-shopping-basket', Panier::class);
+        yield MenuItem::linkToCrud('Commentaire', 'fas fa-comments', Commentaire::class);
+        
+
     }
 }
