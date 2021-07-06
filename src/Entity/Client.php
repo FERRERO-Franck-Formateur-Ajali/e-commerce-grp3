@@ -35,12 +35,16 @@ class Client
     private $phone;
 
     /**
-     * @ORM\OneToOne(targetEntity=User::class, mappedBy="client", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=User::class, mappedBy="Client", cascade={"persist", "remove"})
      */
     private $user;
 
     /**
+<<<<<<< HEAD
+     * @ORM\OneToMany(targetEntity=Adresselivraison::class, mappedBy="Client")
+=======
      * @ORM\OneToMany(targetEntity=Adresselivraison::class, mappedBy="client")
+>>>>>>> 996d2c33c1a95302acbdcbabcc738e291b094345
      */
     private $adresselivraisons;
 

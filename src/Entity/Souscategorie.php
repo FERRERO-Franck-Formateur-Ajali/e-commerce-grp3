@@ -34,7 +34,6 @@ class Souscategorie
      * @ORM\JoinColumn(nullable=false)
      */
     private $categorie;
-
     /**
      * @ORM\OneToMany(targetEntity=Article::class, mappedBy="souscategorie")
      */
@@ -74,12 +73,12 @@ class Souscategorie
         return $this;
     }
 
-    public function getCategorie(): ?categorie
+    public function getCategorie(): ?Categorie
     {
         return $this->categorie;
     }
 
-    public function setCategorie(?categorie $categorie): self
+    public function setCategorie(?Categorie $categorie): self
     {
         $this->categorie = $categorie;
 

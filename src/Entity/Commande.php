@@ -28,12 +28,12 @@ class Commande
     private $montant;
 
     /**
-     * @ORM\OneToOne(targetEntity=panier::class, inversedBy="commande", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=Panier::class, inversedBy="commande", cascade={"persist", "remove"})
      */
     private $panier;
 
     /**
-     * @ORM\ManyToOne(targetEntity=client::class, inversedBy="Commandes")
+     * @ORM\ManyToOne(targetEntity=Client::class, inversedBy="commandes")
      */
     private $client;
 
