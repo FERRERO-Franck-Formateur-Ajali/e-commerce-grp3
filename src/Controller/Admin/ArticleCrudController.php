@@ -12,14 +12,18 @@ class ArticleCrudController extends AbstractCrudController
         return Article::class;
     }
 
-    /*
+    
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id'),
-            TextField::new('title'),
-            TextEditorField::new('description'),
+            'nom',
+            'image',
+            'prix',
+            'stock',
+            'couleur',
+            'description',
+            'promotion',
+            'statut',
         ];
     }
-    */
 }
