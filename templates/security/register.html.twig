@@ -9,13 +9,13 @@
             <div class="col-sm-4 mx-auto">
             {{ form_widget(formUser) }}
             </div>
-            {{ form_end(formUser) }}
-            {{ form_start(formClient) }}
+            {# {{ form_start(formClient) }}
             <div class="col-sm-4 mx-auto">
             {{ form_widget(formClient) }}
-            </div>
-            {{ form_end(formClient) }}
-            <button rtype="submit" class="btn btn-primary">enregistrer</button>
+            </div> #}
+            <button type="submit" class="btn btn-primary">enregistrer</button>
+            {# {{ form_end(formClient) }} #}
+             {{ form_end(formUser) }}
     </div>
 </div>
 {% endblock %}
