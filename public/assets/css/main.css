@@ -9,8 +9,7 @@
 @import url(https://fonts.googleapis.com/css?family=Abel);
 
 :root {
-  --main-color: red;
-  
+  --main-color: blue;
 }
 
 body {
@@ -560,6 +559,7 @@ ul.sub-menu {
   color: #363432;
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
+  width: 100%;
   margin-left: 15px;
 }
 
@@ -1071,8 +1071,8 @@ h2.title {
   background: #ccccc6;
 }
 
-.recommended_items  h2 {
-}
+/*.recommended_items  h2 {
+}*/
 
 .our_partners{
   overflow:hidden;
@@ -1439,13 +1439,13 @@ h2.title {
   overflow: hidden;
 }
 
-.login-form {
+/*.login-form {
 
 }
 
 .signup-form {
 
-}
+}*/
 
 .login-form h2, .signup-form h2 {
   color: #696763;
@@ -1496,9 +1496,9 @@ h2.title {
   padding: 6px 25px;
 }
 
-.login-form label{
+/*.login-form label{
 
-}
+}*/
 
 
 .login-form label input {
@@ -1757,8 +1757,8 @@ h2.title {
   margin-right: 10px
 }
 
-.user_info > li > span {
-}
+/*.user_info > li > span {
+}*/
 
 .user_info input, select, textarea {
   background: #F0F0E9;
@@ -2007,8 +2007,8 @@ h2.title {
   margin-bottom: 17px;
 }
 
-.single-blog-post > a {
-}
+/*.single-blog-post > a {
+}*/
 
 .blog-post-area 
 .single-blog-post a img {
