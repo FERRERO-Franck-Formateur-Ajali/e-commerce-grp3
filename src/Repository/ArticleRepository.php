@@ -3,8 +3,10 @@
 namespace App\Repository;
 
 use App\Entity\Article;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use App\Entity\Categorie;
+use App\Entity\Souscategorie;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @method Article|null find($id, $lockMode = null, $lockVersion = null)
@@ -17,6 +19,21 @@ class ArticleRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Article::class);
+    }
+
+    public function findArticle($nom,$cate)
+    {
+        return $this->createQueryBuilder('a')
+            ->join(Souscategorie::class, 's', 'WITH', 's.id=a.souscategorie')
+            ->join(Categorie::class, 'c', 'WITH', 'c.id=s.categorie')
+            ->andWhere('s.nom = :nom')
+            ->andWhere('c.nom = :cat')
+            ->setParameter('nom', $nom)
+            ->setParameter('cat', $cate)
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+        ;
     }
 
     // /**
