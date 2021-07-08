@@ -1,0 +1,50 @@
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+{% block page_title 'New Article' %}
+{% block head_javascript %}
+        <script src="{{ asset('bundles/easyadmin/app.js') }}"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+        var disabledSouscategorie = function () {
+        $('#article_souscategorie').attr("disabled", true)
+        $('#article_souscategorie').children('option').remove();
+        $('#article_souscategorie').append('<option value="">selectionner votre marque</option>');
+    }
+        $(document).ready(function() {
+            $(document).on("change", "#article_categorie", function() {
+                disabledSouscategorie();
+                var continent = $('#article_categorie').val();
+                if (continent !== '') {
+                    var $form = $(this).closest('form');
+                    var data_continent = {};
+                    data_continent[$('#article_categorie').attr('name')] = continent;
+                    //console.log(data_continent);
+                    $.ajax({
+                        url: $form.attr('action'),
+                        type: $form.attr('method'),
+                        data: data_continent,
+                        success: function(html) {           
+                            $('#article_souscategorie').replaceWith(
+                                $(html).find('#article_souscategorie')
+                            );
+                        },
+                        error: function(html) {
+                            console.log(html);
+                        }
+                    });
+                }
+            });
+        });
+        </script>
+{% endblock head_javascript %}
+
+{% block page_content %}
+{{form_start(form)}}
+{{form_widget(form)}}
+<button type="submit" class="btn btn-primary">enregistrer</button>
+{{form_end(form)}}
+
+{# {{dump()}} #}
+
+
+{% endblock %}

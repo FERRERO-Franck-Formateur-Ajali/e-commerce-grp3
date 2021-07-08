@@ -40,6 +40,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $client;
 
+    public function __construct()
+    {
+        $this->roles = ["ROLE_CLIENT"];
+    }
+
     public function getId(): ?int
     {
         return $this->id;
