@@ -30,7 +30,7 @@ class ArticleRepository extends ServiceEntityRepository
             ->andWhere('c.nom = :cat')
             ->setParameter('nom', $nom)
             ->setParameter('cat', $cate)
-            ->setMaxResults(10)
+  
             ->getQuery()
             ->getResult()
         ;

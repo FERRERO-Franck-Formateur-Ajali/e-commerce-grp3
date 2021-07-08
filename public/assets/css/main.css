@@ -1101,11 +1101,13 @@ h2.title {
 }
 
 .pagination {
-  display: inline-block;
-  margin-bottom: 25px;
+  display: inline-flex;
   margin-top: 0;
-  padding-left: 15px;
+  width: 100%;
+  justify-content: center;
+
 }
+
 
 .pagination  li:first-child  a, .pagination  li:first-child  span {
   border-bottom-left-radius: 0;
