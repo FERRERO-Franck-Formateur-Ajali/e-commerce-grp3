@@ -2526,4 +2526,7 @@ h2.title {
   color: rgba(var(--color), 1);
 }
 
-
+.contact {
+  border: black, solid, 10px;
+  max-width: 50%;
+}
