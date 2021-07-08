@@ -123,4 +123,9 @@ class Adressefacturation
 
         return $this;
     }
+
+    public function __toString()
+    {
+        return $this->rue.' '.$this->ville.' '.$this->codepostal;
+    }
 }
