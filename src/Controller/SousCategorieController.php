@@ -20,7 +20,7 @@ class SousCategorieController extends AbstractController
         $cat = $sub = null;
         if($cate !== null && $nom !== null ){
             $art= $ArticleRepository->findArticle($nom,$cate);
-            dump($art);
+            #dump($art);
             $cat = $this->getDoctrine()->getRepository(Categorie::class)->findAll();
             $sub = $this->getDoctrine()->getRepository(Souscategorie::class)->findAll();
         }
