@@ -35,32 +35,32 @@ class Client
     private $phone;
 
     /**
-     * @ORM\OneToOne(targetEntity=User::class, mappedBy="Client", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=User::class, mappedBy="client", cascade={"persist", "remove"})
      */
     private $user;
 
     /**
-     * @ORM\OneToMany(targetEntity=Adresselivraison::class, mappedBy="Client")    
+     * @ORM\OneToMany(targetEntity=Adresselivraison::class, mappedBy="client")    
      */
     private $adresselivraisons;
 
     /**
-     * @ORM\OneToMany(targetEntity=Adressefacturation::class, mappedBy="Client")
+     * @ORM\OneToMany(targetEntity=Adressefacturation::class, mappedBy="client")
      */
     private $adressefacturations;
 
     /**
-     * @ORM\OneToOne(targetEntity=Panier::class, mappedBy="Client", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=Panier::class, mappedBy="client", cascade={"persist", "remove"})
      */
     private $panier;
 
     /**
-     * @ORM\OneToMany(targetEntity=Commande::class, mappedBy="Client")
+     * @ORM\OneToMany(targetEntity=Commande::class, mappedBy="client")
      */
     private $commandes;
 
     /**
-     * @ORM\OneToMany(targetEntity=Commentaire::class, mappedBy="Client")
+     * @ORM\OneToMany(targetEntity=Commentaire::class, mappedBy="client")
      */
     private $commentaires;
 
@@ -275,5 +275,10 @@ class Client
         }
 
         return $this;
+    }
+
+    public function fullName(): string
+    {
+        return $this->nom.' '.$this->prenom;
     }
 }

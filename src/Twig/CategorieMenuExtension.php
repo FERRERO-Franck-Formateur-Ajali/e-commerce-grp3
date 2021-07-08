@@ -26,5 +26,7 @@ class CategorieMenuExtension extends AbstractExtension
     {
         return $this->categorie->findAll();        
     }
+    
 
 }
+

@@ -17,17 +17,13 @@ class HomeController extends AbstractController
     public function index(): Response
     {
 
-        $nom = $this->getDoctrine()->getRepository(Categorie::class)->findAll();
-        $sub = $this->getDoctrine()->getRepository(Souscategorie::class)->findAll();
+        
         $art = $this->getDoctrine()->getRepository(Article::class)->findAll();
 
         #dump($nom);
-        #dump($sub);
-        dump($art);
+        #dump($art);
         return $this->render('home/index.html.twig', [
-            'controller_name' => 'HomeController',
-            'categories' => $nom,
-            'souscategories' => $sub,
+            'controller_name' => 'HomeController',      
             'article' => $art,
         ]);
     }

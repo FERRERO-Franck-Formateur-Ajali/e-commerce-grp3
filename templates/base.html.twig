@@ -79,7 +79,8 @@
 								<li><a href=""><i class="fa fa-star"></i> Wishlist</a></li>
 								<li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
 								<li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-								<li><a href="login.html" class="active"><i class="fa fa-lock"></i> Login</a></li>
+								<li><a href="{{ path('app_login') }}" class="active"><i class="fa fa-lock"></i> Login</a></li>
+                                {% if is_granted('ROLE_ADMIN') == true %}<li><a href="{{ path('admin') }}" class="active"><i class="fa fa-lock"></i> Admin</a></li>{% endif %}
 							</ul>
 						</div>
 					</div>
