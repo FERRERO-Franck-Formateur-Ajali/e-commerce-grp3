@@ -4,6 +4,9 @@
 
 {% block body %}
 <div class='contact'>
-    {{ form(formulaire) }}
+    {{ form_start(formulaire) }}
+    {{form_widget(formulaire)}}
+    <button type="submit" name="submit" value="submit" class="btn-lg">Envoyer</button>
+    {{form_end(formulaire)}}
 </div>
 {% endblock %}

@@ -2526,7 +2526,17 @@ h2.title {
   color: rgba(var(--color), 1);
 }
 
-.contact {
+.contact>form {
+  display:flex;
+  justify-content: center;
+  flex-direction: column;
   border: black, solid, 10px;
-  max-width: 50%;
+  width: 30%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-lg {
+  background-color: rgba(var(--color), 0.8);
+  color: white;
 }
