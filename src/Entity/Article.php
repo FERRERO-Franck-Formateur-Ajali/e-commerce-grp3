@@ -40,7 +40,7 @@ class Article
     private $description;
 
     /**
-     * @ORM\Column(type="boolean", nullable=true)
+     * @ORM\Column(type="boolean")
      */
     private $statut;
 
@@ -80,9 +80,12 @@ class Article
      */
     private $commentaires;
 
+    private $categorie;
+
     public function __construct()
     {
         $this->commentaires = new ArrayCollection();
+        $this->statut = true;
     }
 
     public function getId(): ?int
@@ -248,6 +251,26 @@ class Article
                 $commentaire->setArticle(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * Get the value of categorie
+     */ 
+    public function getCategorie()
+    {
+        return $this->categorie;
+    }
+
+    /**
+     * Set the value of categorie
+     *
+     * @return  self
+     */ 
+    public function setCategorie($categorie): self
+    {
+        $this->categorie = $categorie;
 
         return $this;
     }

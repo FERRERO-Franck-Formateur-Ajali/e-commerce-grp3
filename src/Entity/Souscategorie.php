@@ -25,7 +25,7 @@ class Souscategorie
     private $nom;
 
     /**
-     * @ORM\Column(type="boolean", nullable=true)
+     * @ORM\Column(type="boolean")
      */
     private $statut;
 
@@ -42,6 +42,7 @@ class Souscategorie
     public function __construct()
     {
         $this->articles = new ArrayCollection();
+        $this->statut = true;
     }
 
     public function getId(): ?int
@@ -114,4 +115,8 @@ class Souscategorie
 
         return $this;
     }
+    public function __toString()
+    {
+        return $this->nom; // <-- add here a real property which
+    }   
 }

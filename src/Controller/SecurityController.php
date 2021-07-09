@@ -66,7 +66,7 @@ class SecurityController extends AbstractController
             // $user = $formUser->getData();
             $password = $passwordEncoder->hashPassword($user, $user->getPassword());
             $user->setPassword($password);
-            $user->setRoles(['ROLE_CLIENT']);
+            // $user->setRoles(['ROLE_CLIENT']);
             // $setClient = $user->getClient($client);
             // $user->setClient($setClient);
             // genere la requete SQL mais ne l'envoie pas
