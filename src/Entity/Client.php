@@ -64,6 +64,11 @@ class Client
      */
     private $commentaires;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Favoris::class, mappedBy="Client", cascade={"persist", "remove"})
+     */
+    private $favoris;
+
     public function __construct()
     {
         $this->adresselivraisons = new ArrayCollection();
@@ -280,5 +285,27 @@ class Client
     public function fullName(): string
     {
         return $this->nom.' '.$this->prenom;
+    }
+
+    public function getFavoris(): ?Favoris
+    {
+        return $this->favoris;
+    }
+
+    public function setFavoris(?Favoris $favoris): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($favoris === null && $this->favoris !== null) {
+            $this->favoris->setClient(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($favoris !== null && $favoris->getClient() !== $this) {
+            $favoris->setClient($this);
+        }
+
+        $this->favoris = $favoris;
+
+        return $this;
     }
 }
