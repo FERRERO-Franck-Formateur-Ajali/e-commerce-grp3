@@ -50,7 +50,7 @@ class Article
     private $stock;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="float")
      */
     private $prix;
 
