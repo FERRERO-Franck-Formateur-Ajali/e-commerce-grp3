@@ -59,19 +59,6 @@ class Client
      */
     private $commandes;
 
-<<<<<<< HEAD
-    /**
-     * @ORM\OneToMany(targetEntity=Commentaire::class, mappedBy="client")
-     */
-    private $commentaires;
-
-    /**
-     * @ORM\OneToOne(targetEntity=Favoris::class, mappedBy="Client", cascade={"persist", "remove"})
-     */
-    private $favoris;
-
-=======
->>>>>>> bd1b1bd642f301e641eb7e387e1307d80a1a955d
     public function __construct()
     {
         $this->adresselivraisons = new ArrayCollection();
