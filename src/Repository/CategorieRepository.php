@@ -46,6 +46,7 @@ class CategorieRepository extends ServiceEntityRepository
         ;
     }
     */
+    
 
     /*
     public function findOneBySomeField($value): ?Categorie

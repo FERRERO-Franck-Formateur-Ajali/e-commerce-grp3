@@ -34,7 +34,6 @@ class Souscategorie
      * @ORM\JoinColumn(nullable=false)
      */
     private $categorie;
-
     /**
      * @ORM\OneToMany(targetEntity=Article::class, mappedBy="souscategorie")
      */
