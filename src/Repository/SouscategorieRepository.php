@@ -34,7 +34,22 @@ class SouscategorieRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
-    */
+    
+    // /**
+    //  * @return Souscategorie[] Returns an array of Souscategorie objects
+    //  */
+    
+    public function findID($value)
+    {
+        return $this->createQueryBuilder('s')
+            ->andWhere('s.id = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
+    
+    
 
     /*
     public function findOneBySomeField($value): ?Souscategorie
