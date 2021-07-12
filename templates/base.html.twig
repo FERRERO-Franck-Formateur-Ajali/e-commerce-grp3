@@ -58,7 +58,11 @@
 								<li><a href=""><i class="fa fa-user"></i> Account</a></li>
 								<li><a href=""><i class="fa fa-star"></i> Wishlist</a></li>
 								<li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-								<li><a href="{{ path('app_login') }}" class="active"><i class="fa fa-lock"></i> Login</a></li>
+                                {% if not app.user %}
+								    <li><a href="{{ path('app_login') }}" class="active"><i class="fa fa-lock"></i> Connexion</a></li>
+                                {% else %}
+                                    <li><a href="{{ path('app_logout') }}" class="active"><i class="fa fa-lock"></i> Déconnexion</a></li>
+                                {% endif %}
                                 {% if is_granted('ROLE_ADMIN') == true %}<li><a href="{{ path('admin') }}" class="active"><i class="fa fa-lock"></i> Admin</a></li>{% endif %}
 							</ul>
 						</div>
