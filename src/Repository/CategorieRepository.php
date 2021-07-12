@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Categorie;
+use App\Entity\Souscategorie;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -19,8 +20,16 @@ class CategorieRepository extends ServiceEntityRepository
         parent::__construct($registry, Categorie::class);
     }
 
+    public function findCategorieBySouscategorie(Souscategorie $souscategorie)
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.id = :val')
+            ->setParameter('val', $souscategorie->getCategorie())
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
 
-    
+    }
     // /**
     //  * @return Categorie[] Returns an array of Categorie objects
     //  */
