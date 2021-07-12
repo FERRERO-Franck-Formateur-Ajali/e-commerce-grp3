@@ -219,6 +219,8 @@ class Client
 
         return $this;
     }
+<<<<<<< HEAD
+=======
 
     /**
      * @return Collection|Commentaire[]
@@ -254,4 +256,5 @@ class Client
     {
         return $this->nom.' '.$this->prenom;
     }
+>>>>>>> e0aab88e52652a8c6b38468d85ad848ad3331c91
 }

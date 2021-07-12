@@ -77,6 +77,11 @@ class Article
 
     private $categorie;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Favoris::class, inversedBy="Article")
+     */
+    private $favoris;
+
     public function __construct()
     {
         $this->commentaires = new ArrayCollection();
@@ -254,6 +259,18 @@ class Article
     public function setCategorie($categorie): self
     {
         $this->categorie = $categorie;
+
+        return $this;
+    }
+
+    public function getFavoris(): ?Favoris
+    {
+        return $this->favoris;
+    }
+
+    public function setFavoris(?Favoris $favoris): self
+    {
+        $this->favoris = $favoris;
 
         return $this;
     }
