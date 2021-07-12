@@ -1761,7 +1761,6 @@
         },
         {
             "name": "knplabs/knp-paginator-bundle",
-<<<<<<< HEAD
             "version": "v5.6.0",
             "source": {
                 "type": "git",
@@ -1777,23 +1776,6 @@
             "require": {
                 "knplabs/knp-components": "^2.4 || ^3.0",
                 "php": "^7.3 || ^8.0",
-=======
-            "version": "v5.3.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/KnpLabs/KnpPaginatorBundle.git",
-                "reference": "87ca999b6ac886e3f20a1e3abc07523140509ca4"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/KnpPaginatorBundle/zipball/87ca999b6ac886e3f20a1e3abc07523140509ca4",
-                "reference": "87ca999b6ac886e3f20a1e3abc07523140509ca4",
-                "shasum": ""
-            },
-            "require": {
-                "knplabs/knp-components": "^2.4",
-                "php": "^7.2",
->>>>>>> e0aab88e52652a8c6b38468d85ad848ad3331c91
                 "symfony/config": "^4.4 || ^5.0",
                 "symfony/dependency-injection": "^4.4 || ^5.0",
                 "symfony/event-dispatcher": "^4.4 || ^5.0",
@@ -1804,22 +1786,14 @@
                 "twig/twig": "^2.0 || ^3.0"
             },
             "require-dev": {
-<<<<<<< HEAD
                 "phpunit/phpunit": "^8.5 || ^9.4",
-=======
-                "phpunit/phpunit": "^7.5 || ^8.5 || ^9.2",
->>>>>>> e0aab88e52652a8c6b38468d85ad848ad3331c91
                 "symfony/expression-language": "^4.4 || ^5.0",
                 "symfony/templating": "^4.4 || ^5.0"
             },
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-<<<<<<< HEAD
                     "dev-master": "5.x-dev"
-=======
-                    "dev-master": "5.3.x-dev"
->>>>>>> e0aab88e52652a8c6b38468d85ad848ad3331c91
                 }
             },
             "autoload": {
@@ -1854,15 +1828,9 @@
             ],
             "support": {
                 "issues": "https://github.com/KnpLabs/KnpPaginatorBundle/issues",
-<<<<<<< HEAD
                 "source": "https://github.com/KnpLabs/KnpPaginatorBundle/tree/v5.6.0"
             },
             "time": "2021-06-11T09:38:48+00:00"
-=======
-                "source": "https://github.com/KnpLabs/KnpPaginatorBundle/tree/master"
-            },
-            "time": "2020-07-21T07:55:12+00:00"
->>>>>>> e0aab88e52652a8c6b38468d85ad848ad3331c91
         },
         {
             "name": "laminas/laminas-code",
