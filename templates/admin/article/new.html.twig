@@ -13,16 +13,16 @@
         $(document).ready(function() {
             $(document).on("change", "#article_categorie", function() {
                 disabledSouscategorie();
-                var continent = $('#article_categorie').val();
-                if (continent !== '') {
+                var categorie = $('#article_categorie').val();
+                if (categorie !== '') {
                     var $form = $(this).closest('form');
-                    var data_continent = {};
-                    data_continent[$('#article_categorie').attr('name')] = continent;
-                    //console.log(data_continent);
+                    var data_categorie = {};
+                    data_categorie[$('#article_categorie').attr('name')] = categorie;
+                    console.log($form);
                     $.ajax({
                         url: $form.attr('action'),
                         type: $form.attr('method'),
-                        data: data_continent,
+                        data: data_categorie,
                         success: function(html) {           
                             $('#article_souscategorie').replaceWith(
                                 $(html).find('#article_souscategorie')

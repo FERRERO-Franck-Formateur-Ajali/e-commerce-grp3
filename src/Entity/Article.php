@@ -50,7 +50,7 @@ class Article
     private $stock;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="float")
      */
     private $prix;
 
@@ -60,7 +60,7 @@ class Article
     private $slug;
 
     /**
-     * @ORM\Column(type="boolean", nullable=true)
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $promotion;
 
@@ -69,11 +69,6 @@ class Article
      * @ORM\JoinColumn(nullable=false)
      */
     private $souscategorie;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=Panier::class, inversedBy="Article")
-     */
-    private $panier;
 
     /**
      * @ORM\OneToMany(targetEntity=Commentaire::class, mappedBy="Article")
@@ -209,18 +204,6 @@ class Article
     public function setSouscategorie(?Souscategorie $souscategorie): self
     {
         $this->souscategorie = $souscategorie;
-
-        return $this;
-    }
-
-    public function getPanier(): ?Panier
-    {
-        return $this->panier;
-    }
-
-    public function setPanier(?Panier $panier): self
-    {
-        $this->panier = $panier;
 
         return $this;
     }
