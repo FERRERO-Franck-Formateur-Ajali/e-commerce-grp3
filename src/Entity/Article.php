@@ -65,7 +65,7 @@ class Article
     private $promotion;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Souscategorie::class, inversedBy="Articles")
+     * @ORM\ManyToOne(targetEntity=Souscategorie::class, inversedBy="articles")
      * @ORM\JoinColumn(nullable=false)
      */
     private $souscategorie;
