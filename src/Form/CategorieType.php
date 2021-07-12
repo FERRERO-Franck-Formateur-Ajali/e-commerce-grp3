@@ -2,27 +2,25 @@
 
 namespace App\Form;
 
-use App\Entity\Client;
+use App\Entity\Categorie;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ClientType extends AbstractType
+class CategorieType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add('nom')
-            ->add('prenom')
-            ->add('phone')
-            // ->add('user', UserType::class);
+            // ->add('statut')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Client::class,
+            'data_class' => Categorie::class,
         ]);
     }
 }

@@ -40,7 +40,7 @@ class Article
     private $description;
 
     /**
-     * @ORM\Column(type="boolean", nullable=true)
+     * @ORM\Column(type="boolean")
      */
     private $statut;
 
@@ -50,7 +50,7 @@ class Article
     private $stock;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="float")
      */
     private $prix;
 
@@ -60,7 +60,7 @@ class Article
     private $slug;
 
     /**
-     * @ORM\Column(type="boolean", nullable=true)
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $promotion;
 
@@ -71,18 +71,16 @@ class Article
     private $souscategorie;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Panier::class, inversedBy="Article")
-     */
-    private $panier;
-
-    /**
      * @ORM\OneToMany(targetEntity=Commentaire::class, mappedBy="Article")
      */
     private $commentaires;
 
+    private $categorie;
+
     public function __construct()
     {
         $this->commentaires = new ArrayCollection();
+        $this->statut = true;
     }
 
     public function getId(): ?int
@@ -210,18 +208,6 @@ class Article
         return $this;
     }
 
-    public function getPanier(): ?Panier
-    {
-        return $this->panier;
-    }
-
-    public function setPanier(?Panier $panier): self
-    {
-        $this->panier = $panier;
-
-        return $this;
-    }
-
     /**
      * @return Collection|Commentaire[]
      */
@@ -248,6 +234,26 @@ class Article
                 $commentaire->setArticle(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * Get the value of categorie
+     */ 
+    public function getCategorie()
+    {
+        return $this->categorie;
+    }
+
+    /**
+     * Set the value of categorie
+     *
+     * @return  self
+     */ 
+    public function setCategorie($categorie): self
+    {
+        $this->categorie = $categorie;
 
         return $this;
     }

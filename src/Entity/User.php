@@ -40,6 +40,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $client;
 
+    public function __construct()
+    {
+        $this->roles = ["ROLE_CLIENT"];
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -81,8 +86,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function getRoles(): array
     {
         $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
+        // guarantee every user at least has ROLE_CLIENT
+        $roles[] = 'ROLE_CLIENT';
 
         return array_unique($roles);
     }
