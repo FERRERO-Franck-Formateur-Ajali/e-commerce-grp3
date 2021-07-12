@@ -20,17 +20,17 @@ class Client
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=30)
+     * @ORM\Column(type="string", length=255)
      */
     private $nom;
 
     /**
-     * @ORM\Column(type="string", length=30)
+     * @ORM\Column(type="string", length=255)
      */
     private $prenom;
 
     /**
-     * @ORM\Column(type="string", length=14)
+     * @ORM\Column(type="integer", length=255)
      */
     private $phone;
 
@@ -50,15 +50,16 @@ class Client
     private $adressefacturations;
 
     /**
-     * @ORM\OneToOne(targetEntity=Panier::class, mappedBy="client", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity=Commentaire::class, mappedBy="client")
      */
-    private $panier;
+    private $commentaires;
 
     /**
-     * @ORM\OneToMany(targetEntity=Commande::class, mappedBy="client")
+     * @ORM\OneToMany(targetEntity=Commande::class, mappedBy="client", orphanRemoval=true)
      */
     private $commandes;
 
+<<<<<<< HEAD
     /**
      * @ORM\OneToMany(targetEntity=Commentaire::class, mappedBy="client")
      */
@@ -69,12 +70,14 @@ class Client
      */
     private $favoris;
 
+=======
+>>>>>>> bd1b1bd642f301e641eb7e387e1307d80a1a955d
     public function __construct()
     {
         $this->adresselivraisons = new ArrayCollection();
         $this->adressefacturations = new ArrayCollection();
-        $this->commandes = new ArrayCollection();
         $this->commentaires = new ArrayCollection();
+        $this->commandes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -200,58 +203,6 @@ class Client
         return $this;
     }
 
-    public function getPanier(): ?Panier
-    {
-        return $this->panier;
-    }
-
-    public function setPanier(?Panier $panier): self
-    {
-        // unset the owning side of the relation if necessary
-        if ($panier === null && $this->panier !== null) {
-            $this->panier->setClient(null);
-        }
-
-        // set the owning side of the relation if necessary
-        if ($panier !== null && $panier->getClient() !== $this) {
-            $panier->setClient($this);
-        }
-
-        $this->panier = $panier;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Commande[]
-     */
-    public function getCommandes(): Collection
-    {
-        return $this->commandes;
-    }
-
-    public function addCommande(Commande $commande): self
-    {
-        if (!$this->commandes->contains($commande)) {
-            $this->commandes[] = $commande;
-            $commande->setClient($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCommande(Commande $commande): self
-    {
-        if ($this->commandes->removeElement($commande)) {
-            // set the owning side to null (unless already changed)
-            if ($commande->getClient() === $this) {
-                $commande->setClient(null);
-            }
-        }
-
-        return $this;
-    }
-
     /**
      * @return Collection|Commentaire[]
      */
@@ -282,29 +233,32 @@ class Client
         return $this;
     }
 
-    public function fullName(): string
+    /**
+     * @return Collection|Commande[]
+     */
+    public function getCommandes(): Collection
     {
-        return $this->nom.' '.$this->prenom;
+        return $this->commandes;
     }
 
-    public function getFavoris(): ?Favoris
+    public function addCommande(Commande $commande): self
     {
-        return $this->favoris;
+        if (!$this->commandes->contains($commande)) {
+            $this->commandes[] = $commande;
+            $commande->setClient($this);
+        }
+
+        return $this;
     }
 
-    public function setFavoris(?Favoris $favoris): self
+    public function removeCommande(Commande $commande): self
     {
-        // unset the owning side of the relation if necessary
-        if ($favoris === null && $this->favoris !== null) {
-            $this->favoris->setClient(null);
+        if ($this->commandes->removeElement($commande)) {
+            // set the owning side to null (unless already changed)
+            if ($commande->getClient() === $this) {
+                $commande->setClient(null);
+            }
         }
-
-        // set the owning side of the relation if necessary
-        if ($favoris !== null && $favoris->getClient() !== $this) {
-            $favoris->setClient($this);
-        }
-
-        $this->favoris = $favoris;
 
         return $this;
     }
