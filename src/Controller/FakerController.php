@@ -27,7 +27,7 @@ class FakerController extends AbstractController
                     ->setPrix("$i");
             $manager->persist($article);
         }
-        dump($article);
+        #dump($article);
         $manager->flush();
         return $this->render('faker/index.html.twig', [
             'controller_name' => 'fakerController',

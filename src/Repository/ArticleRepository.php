@@ -65,6 +65,24 @@ class ArticleRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
         ;
     }
+
+    // /**
+    //  * @return Article[] Returns an array of Article objects
+    //  */
+
+    public function findArticleCom($value)
+    {
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.nom = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
+
+
+
+
             // /**
     //  * @return Article[] Returns an array of Article objects
     //  */

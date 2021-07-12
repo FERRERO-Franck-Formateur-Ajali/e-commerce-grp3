@@ -191,6 +191,38 @@ class Client
     }
 
     /**
+     * @return Collection|Commande[]
+     */
+    public function getCommandes(): Collection
+    {
+        return $this->commandes;
+    }
+
+    public function addCommande(Commande $commande): self
+    {
+        if (!$this->commandes->contains($commande)) {
+            $this->commandes[] = $commande;
+            $commande->setClient($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommande(Commande $commande): self
+    {
+        if ($this->commandes->removeElement($commande)) {
+            // set the owning side to null (unless already changed)
+            if ($commande->getClient() === $this) {
+                $commande->setClient(null);
+            }
+        }
+
+        return $this;
+    }
+<<<<<<< HEAD
+=======
+
+    /**
      * @return Collection|Commentaire[]
      */
     public function getCommentaires(): Collection
@@ -220,33 +252,9 @@ class Client
         return $this;
     }
 
-    /**
-     * @return Collection|Commande[]
-     */
-    public function getCommandes(): Collection
+    public function fullName(): string
     {
-        return $this->commandes;
+        return $this->nom.' '.$this->prenom;
     }
-
-    public function addCommande(Commande $commande): self
-    {
-        if (!$this->commandes->contains($commande)) {
-            $this->commandes[] = $commande;
-            $commande->setClient($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCommande(Commande $commande): self
-    {
-        if ($this->commandes->removeElement($commande)) {
-            // set the owning side to null (unless already changed)
-            if ($commande->getClient() === $this) {
-                $commande->setClient(null);
-            }
-        }
-
-        return $this;
-    }
+>>>>>>> e0aab88e52652a8c6b38468d85ad848ad3331c91
 }
