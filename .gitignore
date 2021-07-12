@@ -7,6 +7,7 @@
 /public/bundles/
 /var/
 /vendor/
+/db/
 ###< symfony/framework-bundle ###
 
 ###> symfony/phpunit-bridge ###
@@ -18,3 +19,10 @@
 /phpunit.xml
 .phpunit.result.cache
 ###< phpunit/phpunit ###
+
+
+
+###> Test ###
+/src/Controller/TestController.php
+/templates/test/*
+###< Test ###
