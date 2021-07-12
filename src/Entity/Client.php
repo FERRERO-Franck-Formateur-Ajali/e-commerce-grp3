@@ -191,36 +191,6 @@ class Client
     }
 
     /**
-     * @return Collection|Commentaire[]
-     */
-    public function getCommentaires(): Collection
-    {
-        return $this->commentaires;
-    }
-
-    public function addCommentaire(Commentaire $commentaire): self
-    {
-        if (!$this->commentaires->contains($commentaire)) {
-            $this->commentaires[] = $commentaire;
-            $commentaire->setClient($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCommentaire(Commentaire $commentaire): self
-    {
-        if ($this->commentaires->removeElement($commentaire)) {
-            // set the owning side to null (unless already changed)
-            if ($commentaire->getClient() === $this) {
-                $commentaire->setClient(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
      * @return Collection|Commande[]
      */
     public function getCommandes(): Collection
