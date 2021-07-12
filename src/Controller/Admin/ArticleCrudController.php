@@ -3,7 +3,9 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Article;
+use App\Entity\Categorie;
 use App\Form\ArticleType;
+use App\Repository\CategorieRepository;
 use App\Repository\SouscategorieRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -29,17 +31,26 @@ class ArticleCrudController extends AbstractCrudController
     
     /**
      * @Route("/admin/new/article", name="admin_new_article")
+     * @Route("/admin/new/article/{id}", name="admin_edit_article")
      */
-    public function newArticle(Request $request): Response
+    public function newArticle(Request $request, CategorieRepository $categorieRepo, ?Article $article): Response
     {
-        $article = new Article();
-        
-        $form = $this->createForm(ArticleType::class, $article);
-     
+        $categorie = null;
+        $manager = $this->getDoctrine()->getManager();
+        $edition = $article === null ? 'new' : 'edit';
+        $article = $article === null ? new Article() : $article;
+
+        if($article->getSouscategorie() !== null){
+            $categorie = $categorieRepo->findCategorieBySouscategorie($article->getSouscategorie());
+        }
+
+        $form = $this->createForm(ArticleType::class, $article, [
+            'edition' => $edition,
+            'categorie' => $categorie
+        ]);
         $form->handleRequest($request);
        
         if ($form->isSubmitted() && $form->isValid()) { 
-            $manager = $this->getDoctrine()->getManager();
             $manager->persist($article);
             $manager->flush();
 
@@ -67,9 +78,16 @@ class ArticleCrudController extends AbstractCrudController
     {
         return $actions
             ->update(Crud::PAGE_INDEX, ACTION::NEW , function(Action $action){
-                return $action->setIcon('fa fa-pencil')->setLabel('Ajouter un article')->linkToRoute('admin_new_article');
-            }
-        ); 
+                return $action->setIcon('fa fa-plus-circle')->setLabel('Ajouter un article')->linkToRoute('admin_new_article');
+            })
+            ->update(Crud::PAGE_INDEX, ACTION::EDIT , function(Action $action){
+                return $action->setIcon('fa fa-pencil')->setLabel('Modifier votre article')->linkToRoute('admin_edit_article',function(Article $article): array{
+                    return [
+                        'id' => $article->getId(),
+                    ];
+                });    
+            });
+         
     }
 
     

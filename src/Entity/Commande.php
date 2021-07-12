@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CommandeRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -28,14 +30,30 @@ class Commande
     private $montant;
 
     /**
-     * @ORM\OneToOne(targetEntity=Panier::class, inversedBy="commande", cascade={"persist", "remove"})
-     */
-    private $panier;
-
-    /**
      * @ORM\ManyToOne(targetEntity=Client::class, inversedBy="commandes")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $client;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $numeroCommande;
+
+    /**
+     * @ORM\Column(type="boolean", options={"comment":"False commande en cours, true commande archiver"})
+     */
+    private $statut;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Panier::class, mappedBy="commande", orphanRemoval=true)
+     */
+    private $paniers;
+
+    public function __construct()
+    {
+        $this->paniers = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -66,26 +84,68 @@ class Commande
         return $this;
     }
 
-    public function getPanier(): ?panier
-    {
-        return $this->panier;
-    }
-
-    public function setPanier(?panier $panier): self
-    {
-        $this->panier = $panier;
-
-        return $this;
-    }
-
-    public function getClient(): ?client
+    public function getClient(): ?Client
     {
         return $this->client;
     }
 
-    public function setClient(?client $client): self
+    public function setClient(?Client $client): self
     {
         $this->client = $client;
+
+        return $this;
+    }
+
+    public function getNumeroCommande(): ?string
+    {
+        return $this->numeroCommande;
+    }
+
+    public function setNumeroCommande(string $numeroCommande): self
+    {
+        $this->numeroCommande = $numeroCommande;
+
+        return $this;
+    }
+
+    public function getStatut(): ?bool
+    {
+        return $this->statut;
+    }
+
+    public function setStatut(bool $statut): self
+    {
+        $this->statut = $statut;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Panier[]
+     */
+    public function getPaniers(): Collection
+    {
+        return $this->paniers;
+    }
+
+    public function addPanier(Panier $panier): self
+    {
+        if (!$this->paniers->contains($panier)) {
+            $this->paniers[] = $panier;
+            $panier->setCommande($this);
+        }
+
+        return $this;
+    }
+
+    public function removePanier(Panier $panier): self
+    {
+        if ($this->paniers->removeElement($panier)) {
+            // set the owning side to null (unless already changed)
+            if ($panier->getCommande() === $this) {
+                $panier->setCommande(null);
+            }
+        }
 
         return $this;
     }

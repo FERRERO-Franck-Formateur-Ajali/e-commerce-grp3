@@ -20,17 +20,17 @@ class Client
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=30)
+     * @ORM\Column(type="string", length=255)
      */
     private $nom;
 
     /**
-     * @ORM\Column(type="string", length=30)
+     * @ORM\Column(type="string", length=255)
      */
     private $prenom;
 
     /**
-     * @ORM\Column(type="string", length=14)
+     * @ORM\Column(type="integer", length=255)
      */
     private $phone;
 
@@ -50,26 +50,21 @@ class Client
     private $adressefacturations;
 
     /**
-     * @ORM\OneToOne(targetEntity=Panier::class, mappedBy="client", cascade={"persist", "remove"})
-     */
-    private $panier;
-
-    /**
-     * @ORM\OneToMany(targetEntity=Commande::class, mappedBy="client")
-     */
-    private $commandes;
-
-    /**
      * @ORM\OneToMany(targetEntity=Commentaire::class, mappedBy="client")
      */
     private $commentaires;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Commande::class, mappedBy="client", orphanRemoval=true)
+     */
+    private $commandes;
 
     public function __construct()
     {
         $this->adresselivraisons = new ArrayCollection();
         $this->adressefacturations = new ArrayCollection();
-        $this->commandes = new ArrayCollection();
         $this->commentaires = new ArrayCollection();
+        $this->commandes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -191,28 +186,6 @@ class Client
                 $adressefacturation->setClient(null);
             }
         }
-
-        return $this;
-    }
-
-    public function getPanier(): ?Panier
-    {
-        return $this->panier;
-    }
-
-    public function setPanier(?Panier $panier): self
-    {
-        // unset the owning side of the relation if necessary
-        if ($panier === null && $this->panier !== null) {
-            $this->panier->setClient(null);
-        }
-
-        // set the owning side of the relation if necessary
-        if ($panier !== null && $panier->getClient() !== $this) {
-            $panier->setClient($this);
-        }
-
-        $this->panier = $panier;
 
         return $this;
     }

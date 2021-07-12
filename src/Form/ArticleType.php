@@ -15,6 +15,7 @@ use App\Repository\SouscategorieRepository;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
+use Symfony\Component\Form\ChoiceList\ChoiceList;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
@@ -32,19 +33,46 @@ class ArticleType extends AbstractType
             ->add('stock')
             ->add('prix')
             // ->add('slug')
-            ->add('promotion')
-            ->add('categorie', EntityType::class,[
-                'class' => Categorie::class,
-                'choice_label' => 'nom',
-                'choice_value' => 'id',
-                'placeholder' => 'selectionner une option',
-            ])
-            ->add('souscategorie', ChoiceType::class,[
-                'placeholder' => 'selectionner une option',
-                'attr' => [
-                    'disabled' => true
-                ],        
-            ]);
+            ->add('promotion');
+                if($options['edition'] === 'new'){
+                    $builder
+                        ->add('categorie', EntityType::class,[
+                            'class' => Categorie::class,
+                            'choice_label' => 'nom',
+                            'choice_value' => 'id',
+                            'placeholder' => 'selectionner une option',
+                        ])
+                        ->add('souscategorie', ChoiceType::class,[
+                            'placeholder' => 'selectionner une option',
+                            'attr' => [
+                                'disabled' => true
+                            ],        
+                        ]);
+                }
+                else{
+                    $this->categorie = $options['categorie'];
+                    $builder
+                        ->add('categorie', EntityType::class,[
+                            'class' => Categorie::class,
+                            'choice_label' => 'nom',
+                            'choice_value' => 'id',
+                            'data' => $this->categorie,
+                        ])
+                        ->add('souscategorie', EntityType::class, [
+                        'label' => 'Marque',
+                        'class' => Souscategorie::class,
+                        'choice_label' => 'nom',
+                        'choice_value' => 'id',
+                        'query_builder' => function (EntityRepository $er) {
+                            return $er->createQueryBuilder('s')
+                                ->where('s.statut = :statut')
+                                ->andWhere('s.categorie = :categorie')
+                                ->setParameter('statut', true)
+                                ->setParameter('categorie', $this->categorie);
+                        },
+                    ]);    
+                };
+            
             // Recupére les sous catégorie a partir de la catégorie sélectionner
             $addSousCategoriesForm = function (FormInterface $form, $categorie) {
                 if (!empty($categorie)) {
@@ -65,6 +93,7 @@ class ArticleType extends AbstractType
                         ]);  
                 }
             };
+
             $builder->addEventListener(
                 FormEvents::PRE_SET_DATA,
                 function (FormEvent $event) use ($addSousCategoriesForm) {
@@ -88,6 +117,8 @@ class ArticleType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Article::class,
+            'edition' => null,
+            'categorie' => null
         ]);
     }
 }
