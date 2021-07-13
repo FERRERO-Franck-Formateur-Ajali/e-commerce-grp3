@@ -6,6 +6,7 @@ use App\Repository\ArticleRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass=ArticleRepository::class)
@@ -40,7 +41,7 @@ class Article
     private $description;
 
     /**
-     * @ORM\Column(type="boolean", nullable=true)
+     * @ORM\Column(type="boolean")
      */
     private $statut;
 
@@ -50,39 +51,41 @@ class Article
     private $stock;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="float")
      */
     private $prix;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $slug;
-
-    /**
-     * @ORM\Column(type="boolean", nullable=true)
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $promotion;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Souscategorie::class, inversedBy="Articles")
+     * @var string
+     * 
+     * @Gedmo\Slug(prefix="PC007", fields={"nom", "stock"}, suffix="19950903", separator="")
+     * 
+     * @ORM\Column(type="string", length=255)
+     */
+    private $slug;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Souscategorie::class, inversedBy="articles")
      * @ORM\JoinColumn(nullable=false)
      */
     private $souscategorie;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=Panier::class, inversedBy="Article")
-     */
-    private $panier;
 
     /**
      * @ORM\OneToMany(targetEntity=Commentaire::class, mappedBy="Article")
      */
     private $commentaires;
 
+    private $categorie;
+
     public function __construct()
     {
         $this->commentaires = new ArrayCollection();
+        $this->statut = true;
     }
 
     public function getId(): ?int
@@ -210,18 +213,6 @@ class Article
         return $this;
     }
 
-    public function getPanier(): ?Panier
-    {
-        return $this->panier;
-    }
-
-    public function setPanier(?Panier $panier): self
-    {
-        $this->panier = $panier;
-
-        return $this;
-    }
-
     /**
      * @return Collection|Commentaire[]
      */
@@ -248,6 +239,26 @@ class Article
                 $commentaire->setArticle(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * Get the value of categorie
+     */ 
+    public function getCategorie()
+    {
+        return $this->categorie;
+    }
+
+    /**
+     * Set the value of categorie
+     *
+     * @return  self
+     */ 
+    public function setCategorie($categorie): self
+    {
+        $this->categorie = $categorie;
 
         return $this;
     }

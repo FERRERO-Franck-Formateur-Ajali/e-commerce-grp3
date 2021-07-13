@@ -43,7 +43,7 @@ class Adressefacturation
     private $ville;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Client::class, inversedBy="Adressefacturations")
+     * @ORM\ManyToOne(targetEntity=Client::class, inversedBy="adressefacturations")
      */
     private $client;
 
@@ -122,5 +122,10 @@ class Adressefacturation
         $this->client = $client;
 
         return $this;
+    }
+
+    public function __toString(): string
+    {
+      return $this->rue.' '.$this->ville.' '.$this->codepostal;
     }
 }

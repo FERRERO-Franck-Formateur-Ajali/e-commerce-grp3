@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nous contacter{% endblock %}
+
+{% block body %}
+<div class='contact'>
+    {{ form_start(formulaire) }}
+    {{form_widget(formulaire)}}
+    <button type="submit" name="submit" value="submit" class="btn-lg">Envoyer</button>
+    {{form_end(formulaire)}}
+</div>
+{% endblock %}
