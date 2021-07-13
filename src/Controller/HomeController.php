@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Article;
 use App\Entity\Categorie;
 use App\Entity\Souscategorie;
+use Container6WmGn4O\getUserTypeService;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -16,7 +17,7 @@ class HomeController extends AbstractController
      */
     public function index(): Response
     {
-
+        
         
         $art = $this->getDoctrine()->getRepository(Article::class)->findAll();
 

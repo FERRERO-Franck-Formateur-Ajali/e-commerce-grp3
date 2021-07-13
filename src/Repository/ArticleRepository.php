@@ -73,7 +73,7 @@ class ArticleRepository extends ServiceEntityRepository
     public function findArticleCom($value)
     {
         return $this->createQueryBuilder('a')
-            ->andWhere('a.nom = :val')
+            ->andWhere('a.slug = :val')
             ->setParameter('val', $value)
             ->getQuery()
             ->getOneOrNullResult()

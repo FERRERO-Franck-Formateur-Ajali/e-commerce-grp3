@@ -36,6 +36,21 @@ class CommentaireRepository extends ServiceEntityRepository
     }
     */
 
+    // /**
+    //  * @return Commentaire[] Returns an array of Commentaire objects
+    //  */
+    
+    public function findCom($value)
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.article = :val')
+            ->setParameter('val', $value)
+            ->orderBy('c.id', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     /*
     public function findOneBySomeField($value): ?Commentaire
     {

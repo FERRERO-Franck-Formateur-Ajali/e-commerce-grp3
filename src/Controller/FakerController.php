@@ -19,7 +19,7 @@ class FakerController extends AbstractController
         $manager= $this->getDoctrine()->getManager();        
         for($i=1; $i<=5; $i++){
             $lenovo = new Article;
-            $lenovo->setSouscategorie($SouscatRep->findID(3))
+            $lenovo->setSouscategorie($SouscatRep->findID(1))
                     ->setImage("lenovo1.jpg")
                     ->setNom("lenovo Modele $i")
                     ->setCouleur("gray")
@@ -27,7 +27,7 @@ class FakerController extends AbstractController
                     ->setPrix(100*$i)
                     ->setStock(25*$i);
             $msi = new Article;
-            $msi->setSouscategorie($SouscatRep->findID(4))
+            $msi->setSouscategorie($SouscatRep->findID(1))
                     ->setImage("msi1.jpg")
                     ->setNom("MSI Modele $i")
                     ->setCouleur("red")
@@ -35,7 +35,7 @@ class FakerController extends AbstractController
                     ->setPrix(200*$i)
                     ->setStock(10*$i);
             $huawei = new Article;
-            $huawei->setSouscategorie($SouscatRep->findID(6))
+            $huawei->setSouscategorie($SouscatRep->findID(2))
                     ->setImage("huawei.jpg")
                     ->setNom("huawei Modele $i")
                     ->setCouleur("blue")
@@ -43,7 +43,7 @@ class FakerController extends AbstractController
                     ->setPrix(75*$i)
                     ->setStock(125*$i);
             $apple = new Article;
-            $apple->setSouscategorie($SouscatRep->findID(5))
+            $apple->setSouscategorie($SouscatRep->findID(2))
                     ->setImage("Applephone1.jpg")
                     ->setNom("apple Modele $i")
                     ->setCouleur("gold")
