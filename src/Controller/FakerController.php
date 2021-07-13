@@ -19,13 +19,21 @@ class FakerController extends AbstractController
         $manager= $this->getDoctrine()->getManager();        
         for($i=1; $i<=10; $i++){
             $article = new Article;
-            $article->setSouscategorie($SouscatRep->findID(37))
+            $article->setSouscategorie($SouscatRep->findID(1))
                     ->setImage("https://placehold.it/350x350")
                     ->setNom("Article n°$i")
                     ->setCouleur("red")
                     ->setDescription("la description")
                     ->setPrix("$i");
             $manager->persist($article);
+            $article2 = new Article;
+            $article2->setSouscategorie($SouscatRep->findID(15))
+                    ->setImage("https://placehold.it/350x350")
+                    ->setNom("produit n°$i")
+                    ->setCouleur("red")
+                    ->setDescription("la description")
+                    ->setPrix("$i");
+            $manager->persist($article2);
         }
         #dump($article);
         $manager->flush();

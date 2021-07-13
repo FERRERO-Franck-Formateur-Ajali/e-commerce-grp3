@@ -12,9 +12,14 @@ class PanierController extends AbstractController
     /**
      * @Route("/panier", name="panier")
      */
+
+
+
+
     public function index(PanierRepository $PanierRepository): Response
     {
         $panier = $PanierRepository->findAll();
+        dump($panier);
 
         return $this->render('panier/index.html.twig', [
             'controller_name' => 'PanierController',
