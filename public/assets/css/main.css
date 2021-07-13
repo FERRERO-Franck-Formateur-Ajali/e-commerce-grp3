@@ -2,9 +2,15 @@
 /*************************
 *******Typography******
 **************************/
+
+
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,400italic,500,700,100);
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,800,300,600,700);
 @import url(https://fonts.googleapis.com/css?family=Abel);
+
+:root {
+  --color: 0, 0, 255;
+}
 
 body {
   font-family: 'Roboto', sans-serif;
@@ -125,7 +131,7 @@ a#scrollUp i{
 }
 
 .fa-linkedin:hover  {
-	background:#FF4518;
+	background: rgba(var(--color), 1);
 }
 
 .fa-dribbble:hover  {
@@ -162,6 +168,7 @@ a#scrollUp i{
 }
 
 .usa:hover {
+<<<<<<< HEAD
 	background:rgba(var(--color), 1);
 	color:#fff;
 	border-color:rgba(var(--color), 1);
@@ -169,6 +176,15 @@ a#scrollUp i{
 
 .usa:active, .usa.active {
   background: none repeat scroll 0 0 rgba(var(--color), 1);
+=======
+	background: rgba(var(--color), 1);
+	color:#fff;
+	border-color: rgba(var(--color), 1);
+}
+
+.usa:active, .usa.active {
+  background: none repeat scroll 0 0  rgba(var(--color), 1);
+>>>>>>> 809341f1367957cf55403b699eca17eb67280fdd
   box-shadow: inherit;
   outline: 0 none;
 }
@@ -179,7 +195,11 @@ a#scrollUp i{
 }
 
 .dropdown-menu  li  a:hover, .dropdown-menu  li  a:focus {
+<<<<<<< HEAD
   background-color: rgba(var(--color), 1);
+=======
+  background-color:  rgba(var(--color), 1);
+>>>>>>> 809341f1367957cf55403b699eca17eb67280fdd
   color: #FFFFFF;
   font-family: 'Roboto', sans-serif;
   text-decoration: none;
@@ -249,7 +269,7 @@ a#scrollUp i{
 
 .mainmenu ul li a:hover, .mainmenu ul li a.active,  .shop-menu ul li a.active{
 	background:none;
-	color:#fdb45e;
+	color:rgba(var(--color), 1);
 }
 
 .search_box input {
@@ -302,7 +322,7 @@ ul.sub-menu {
 }
 
 .dropdown ul.sub-menu li .active{
-  color: #FDB45E;
+  color: rgba(var(--color), 1);
   padding-left: 0;
 }
 
@@ -320,7 +340,7 @@ ul.sub-menu {
 }
 
 .navbar-nav li ul.sub-menu li a:hover{
-    color: #FDB45E;
+    color: rgba(var(--color), 1);
 }
 
 .fa-angle-down{
@@ -367,7 +387,11 @@ ul.sub-menu {
 }
 
 .companyinfo h2  span{
+<<<<<<< HEAD
   color:rgba(var(--color), 1);
+=======
+  color: rgba(var(--color), 1);
+>>>>>>> 809341f1367957cf55403b699eca17eb67280fdd
 }
 
 .companyinfo p {
@@ -501,7 +525,11 @@ ul.sub-menu {
 
 .single-widget ul li a:hover{
 	background:none;
+<<<<<<< HEAD
 	color:rgba(var(--color), 1);
+=======
+	color: rgba(var(--color), 1);
+>>>>>>> 809341f1367957cf55403b699eca17eb67280fdd
 }
 
 
@@ -553,6 +581,7 @@ ul.sub-menu {
   color: #363432;
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
+  width: 100%;
   margin-left: 15px;
 }
 
@@ -891,7 +920,11 @@ h2.title {
 }
 
 .product-overlay {
+<<<<<<< HEAD
   background:rgba(var(--color), 0.35);
+=======
+  background: rgba(var(--color), 0.35);
+>>>>>>> 809341f1367957cf55403b699eca17eb67280fdd
   top: 0;
   display: none;
   height: 0;
@@ -899,7 +932,6 @@ h2.title {
   transition: height 500ms ease 0s;
   width: 100%;
   display: block;
-  /* opacity:; */
 }
 
 .single-products:hover .product-overlay {
@@ -1065,8 +1097,12 @@ h2.title {
 }
 
 /*.recommended_items  h2 {
+<<<<<<< HEAD
 }
 */
+=======
+}*/
+>>>>>>> 809341f1367957cf55403b699eca17eb67280fdd
 
 .our_partners{
   overflow:hidden;
@@ -1100,7 +1136,12 @@ h2.title {
   margin-top: 0;
   width: 100%;
   justify-content: center;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 809341f1367957cf55403b699eca17eb67280fdd
 }
+
 
 .pagination  li:first-child  a, .pagination  li:first-child  span {
   border-bottom-left-radius: 0;
@@ -1439,8 +1480,12 @@ h2.title {
 
 .signup-form {
 
+<<<<<<< HEAD
 }
 */
+=======
+}*/
+>>>>>>> 809341f1367957cf55403b699eca17eb67280fdd
 
 .login-form h2, .signup-form h2 {
   color: #696763;
@@ -1493,8 +1538,12 @@ h2.title {
 
 /*.login-form label{
 
+<<<<<<< HEAD
 }
 */
+=======
+}*/
+>>>>>>> 809341f1367957cf55403b699eca17eb67280fdd
 
 
 .login-form label input {
@@ -1753,8 +1802,13 @@ h2.title {
   margin-right: 10px
 }
 
+<<<<<<< HEAD
 /* .user_info > li > span {
 } */
+=======
+/*.user_info > li > span {
+}*/
+>>>>>>> 809341f1367957cf55403b699eca17eb67280fdd
 
 .user_info input, select, textarea {
   background: #F0F0E9;
@@ -2003,8 +2057,13 @@ h2.title {
   margin-bottom: 17px;
 }
 
+<<<<<<< HEAD
 /* .single-blog-post > a {
 } */
+=======
+/*.single-blog-post > a {
+}*/
+>>>>>>> 809341f1367957cf55403b699eca17eb67280fdd
 
 .blog-post-area 
 .single-blog-post a img {
@@ -2469,7 +2528,7 @@ h2.title {
 #contact-page .form-control:focus, 
 #contact-page .form-control:hover {
   box-shadow: inherit;
-  border-color: #FDB45E;
+  border-color: rgba(var(--color), 1);
 }
 
 #contact-page .contact-info {
@@ -2523,4 +2582,17 @@ h2.title {
   color: rgba(var(--color), 1);
 }
 
+.contact>form {
+  display:flex;
+  justify-content: center;
+  flex-direction: column;
+  border: black, solid, 10px;
+  width: 30%;
+  margin-left: auto;
+  margin-right: auto;
+}
 
+.btn-lg {
+  background-color: rgba(var(--color), 0.8);
+  color: white;
+}

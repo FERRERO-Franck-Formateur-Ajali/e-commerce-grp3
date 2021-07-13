@@ -35,6 +35,18 @@ class ClientRepository extends ServiceEntityRepository
         ;
     }
     */
+    // /**
+    //  * @return Client[] Returns an array of Client objects
+    //  */
+    public function findClientID($value)
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.id = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
 
     /*
     public function findOneBySomeField($value): ?Client

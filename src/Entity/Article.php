@@ -6,6 +6,7 @@ use App\Repository\ArticleRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass=ArticleRepository::class)
@@ -55,14 +56,18 @@ class Article
     private $prix;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $slug;
-
-    /**
      * @ORM\Column(type="integer", nullable=true)
      */
     private $promotion;
+
+    /**
+     * @var string
+     * 
+     * @Gedmo\Slug(prefix="PC007", fields={"nom", "stock"}, suffix="19950903", separator="")
+     * 
+     * @ORM\Column(type="string", length=255)
+     */
+    private $slug;
 
     /**
      * @ORM\ManyToOne(targetEntity=Souscategorie::class, inversedBy="articles")
