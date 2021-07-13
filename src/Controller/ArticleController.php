@@ -18,9 +18,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class ArticleController extends AbstractController
 {
     /**
-     * @Route("/article/{nom}", name="article")
+     * @Route("/article/{slug}", name="article")
      */
-    public function index(Article $article, string $nom ,Request $request,ClientRepository $clientRep,ArticleRepository $articleRep,CommentaireRepository $comRep,PaginatorInterface $paginator): Response
+    public function index(Article $article, string $slug ,Request $request,ClientRepository $clientRep,ArticleRepository $articleRep,CommentaireRepository $comRep,PaginatorInterface $paginator): Response
     {
 
         $com = new Commentaire();
@@ -32,8 +32,8 @@ class ArticleController extends AbstractController
         #dump($clientRep->findClientID(1));
         $user = $this->getUser();
         $client = $clientRep->findClientID($user);
-        $articleDetail = $articleRep->findArticleCom($nom);
-        dump($com);
+        $articleDetail = $articleRep->findArticleCom($slug);
+        #dump($com);
         if($form->isSubmitted() && $form->isValid()){
             $com->setDateheure(new \DateTime('now', new \DateTimeZone('Europe/Paris')))
                 ->setArticle($articleDetail)
@@ -48,7 +48,7 @@ class ArticleController extends AbstractController
         }
 
         $commentaire= $comRep->findCom($articleDetail);
-        dump($commentaire);
+        #dump($commentaire);
 
         $page = $paginator->paginate(
             $commentaire,

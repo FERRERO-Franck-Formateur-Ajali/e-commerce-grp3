@@ -31,7 +31,7 @@
                                     <div class="product-image-wrapper">
                                         <div class="single-products">
                                             <div class="productinfo text-center">
-                                                <a href="{{path('article', {'nom':art.nom})}}"><img src="{{ asset('assets/images/home/ordi.jpg') }}" alt="{{art.nom}}"/>
+                                                <a href="{{path('article', {'slug':art.slug})}}"><img src="{{ asset('assets/images/home/ordi.jpg') }}" alt="{{art.nom}}"/>
                                                 <h2>{{art.prix}}€</h2>
                                                 <p>{{art.nom}}</p>
                                                 <a href="#" class="btn btn-default add-to-cart">
@@ -40,7 +40,7 @@
                                             <div class="product-overlay">
                                                 <div class="overlay-content">
                                                     <h2>{{art.prix}}€</h2>
-                                                    <a href="{{path('article', {'nom':art.nom})}}"><p>{{art.nom}}</p></a>
+                                                    <a href="{{path('article', {'slug':art.slug})}}"><p>{{art.nom}}</p></a>
                                                     <a href="#" class="btn btn-default add-to-cart">
                                                         <i class="fa fa-shopping-cart"></i>Add to cart</a>
                                                 </div>
