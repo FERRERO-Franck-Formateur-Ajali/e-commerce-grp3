@@ -36,6 +36,26 @@ class CommandeRepository extends ServiceEntityRepository
     }
     */
 
+
+
+    // /**
+    //  * @return Commande[] Returns an array of Commande objects
+    //  */
+    public function findCommande($value)
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.client = :val')
+            ->andWhere('c.statut = :valStat')
+            //->andWhere('c.montant = :valMon')
+            ->setParameter('val', $value)
+            ->setParameter('valStat', false) 
+            //->setParameter('valMon', null)          
+            ->getQuery()
+            ->getOneOrNullResult()
+            
+        ;
+    }
+
     /*
     public function findOneBySomeField($value): ?Commande
     {

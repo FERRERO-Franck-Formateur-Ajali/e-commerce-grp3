@@ -32,7 +32,7 @@ class ArticleController extends AbstractController
         #dump($clientRep->findClientID(1));
         $user = $this->getUser();
         $client = $clientRep->findClientID($user);
-        $articleDetail = $articleRep->findArticleCom($slug);
+        $articleDetail = $articleRep->findArticleSlug($slug);
         #dump($com);
         if($form->isSubmitted() && $form->isValid()){
             $com->setDateheure(new \DateTime('now', new \DateTimeZone('Europe/Paris')))

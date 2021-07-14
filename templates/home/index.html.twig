@@ -129,16 +129,26 @@
                                         <div class="productinfo text-center">
                                             <img src="{{ asset('assets/images/shop/' ~ art.image ~ '') }}" alt=""/>
                                             <h2>{{art.prix}}€</h2>
-                                            <p>{{art.nom}}</p>
-                                            <a href="#" class="btn btn-default add-to-cart">
-                                                <i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                            <a href="{{path('article', {'slug':art.slug})}}"><p>{{art.nom}}</p></a>
+                                            {% if not app.user %}
+                                                <a href="{{path('app_login')}}" class="btn btn-default add-to-cart">
+                                            {% else %}
+                                                <a href="{{path('panier_add', {'slug':art.slug})}}" class="btn btn-default add-to-cart">
+                                            {% endif %}
+                                            <i class="fa fa-shopping-cart"></i>Add to cart</a>
+
                                         </div>
                                         <div class="product-overlay">
                                             <div class="overlay-content">
                                                 <h2>{{art.prix}}€</h2>
-                                                <p>{{art.nom}}</p>
-                                                <a href="#" class="btn btn-default add-to-cart">
-                                                    <i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                                <a href="{{path('article', {'slug':art.slug})}}"><p>{{art.nom}}</p></a>
+                                                {% if not app.user %}
+                                                    <a href="{{path('app_login')}}" class="btn btn-default add-to-cart">
+                                                {% else %}
+                                                    <a href="{{path('panier_add', {'slug':art.slug})}}" class="btn btn-default add-to-cart">
+                                                    
+                                                {% endif %}                                                    
+                                                <i class="fa fa-shopping-cart"></i>Add to cart</a>
                                             </div>
                                         </div>
                                     </div>

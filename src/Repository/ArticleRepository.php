@@ -70,7 +70,7 @@ class ArticleRepository extends ServiceEntityRepository
     //  * @return Article[] Returns an array of Article objects
     //  */
 
-    public function findArticleCom($value)
+    public function findArticleSlug($value)
     {
         return $this->createQueryBuilder('a')
             ->andWhere('a.slug = :val')
