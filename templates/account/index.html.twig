@@ -5,99 +5,47 @@
 {% block body %}
 <div class="container">
 			<div class="row">
-				<div class="col-sm-4">
-					<div class="left-sidebar">
-						<div class="panel-group category-products" id="accordian"><!--category-productsr-->
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title">
-										<a class="nav-link" id="orders-nav" data-toggle="pill" href="#orders-tab" role="tab">
-											Toute vos Commandes 
-										</a>
-									</h4>
-								</div>
-                                <div class="panel-heading">
-									<h4 class="panel-title">
-										<a class="nav-link" id="orders-nav" data-toggle="pill" href="#orders-tab" role="tab">
-											Votre panier
-										</a>
-									</h4>
-								</div>
-								<div class="panel-heading">
-									<h4 class="panel-title">
-										<a class="nav-link" id="orders-nav" data-toggle="pill" href="#orders-tab" role="tab">
-											Changer votre mot de passe 
-										</a>
-									</h4>
-								</div>
-                                <div class="panel-heading">
-									<h4 class="panel-title">
-										<a class="nav-link" id="orders-nav" data-toggle="pill" href="#orders-tab" role="tab">
-										    Changer vos informations personnelles
-										</a>
-									</h4>
-								</div>
-                                <div class="panel-heading">
-									<h4 class="panel-title">
-										<a class="nav-link" id="orders-nav" data-toggle="pill" href="#orders-tab" role="tab">
-										    Ajouter où modifier une addresse de livraison
-										</a>
-									</h4>
-								</div>
-                                <div class="panel-heading">
-									<h4 class="panel-title">
-										<a class="nav-link" id="orders-nav" data-toggle="pill" href="#orders-tab" role="tab">
-										    Ajouter où modifier une addresse de facturation
-										</a>
-									</h4>
-								</div>
-							</div>
-                        </div>
+                <div class="col-sm-6">
+                    <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Changer vos information personnelle</h5>
+                        <p class="card-text">Nom: {{app.user.client.nom}} </br>
+                        Prénom: {{app.user.client.prenom}} </br>
+                        téléphone: {{app.user.client.phone}} 
+                        </p>
+                        <a href="{{ path('account_modifierclient') }}" class="btn btn-primary">Modifier votre profile</a>
+                    </div>
                     </div>
                 </div>
-                <div class="col-sm-8">
-                        <div class="tab-pane fade" id="orders-tab" role="tabpanel" aria-labelledby="orders-nav">
-                            <div class="table-responsive">
-                                <table class="table table-bordered">
-                                    <thead class="thead-dark">
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Product</th>
-                                            <th>Date</th>
-                                            <th>Price</th>
-                                            <th>Status</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Product Name</td>
-                                            <td>01 Jan 2020</td>
-                                            <td>$99</td>
-                                            <td>Approved</td>
-                                            <td><button class="btn">View</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Product Name</td>
-                                            <td>01 Jan 2020</td>
-                                            <td>$99</td>
-                                            <td>Approved</td>
-                                            <td><button class="btn">View</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Product Name</td>
-                                            <td>01 Jan 2020</td>
-                                            <td>$99</td>
-                                            <td>Approved</td>
-                                            <td><button class="btn">View</button></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                <div class="col-sm-6">
+                    <a href="{{ path('account_adresselivraison') }}">
+                    <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Vos adresses de livraisons</h5>
+                        <p class="card-text">Modifier les adresses et les préférences de livraison de vos commandes</p>
+                    </div>
+                    </div>
+                    </a>
+                </div>
+                <div class="col-sm-6">
+                    <a href="{{ path('account_adressefacturation') }}">
+                    <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Vos adresses de facturations</h5>
+                        <p class="card-text">Modifier les adresses et les préférences de facturations de vos commandes</p>
+                    </div>
+                    </div>
+                    </a>
+                </div>
+                <div class="col-sm-6">
+                    <a href="{{ path('account_commandes') }}">
+                    <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Vos commandes</h5>
+                        <p class="card-text">Un historique de vos achats sur notre plateforme</p>
+                    </div>
+                    </div>
+                    </a>
                 </div>
             </div>
 </div>

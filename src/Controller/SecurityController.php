@@ -76,7 +76,8 @@ class SecurityController extends AbstractController
             $this->em->flush();
             // renvoie a la page register (a modifier pour renvoyer a l'accueil)
             // dump($client);
-            return $this->redirectToRoute('app_register_user');
+            $this->addFlash('message', 'Compte Créer');
+            return $this->redirectToRoute('home');
             }
         dump($user);
         return $this->render('security/register.html.twig', [
