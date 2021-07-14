@@ -1,19 +1,104 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AccountController!{% endblock %}
+{% block title %}Votre Espace Client{% endblock %}
 
 {% block body %}
 <div class="container">
-  <div class="row">
-    <div class="col">
-      Nom et Prénom : 
-    </div>
-    <div class="col-md-auto">
-      {{ app.user.client.nom }} {{ app.user.client.prenom }}
-    </div>
-    <div class="col-lg-2">
-       <button class="btn btn-primary">modifier</button>
-    </div>
-  </div>
+			<div class="row">
+				<div class="col-sm-4">
+					<div class="left-sidebar">
+						<div class="panel-group category-products" id="accordian"><!--category-productsr-->
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title">
+										<a class="nav-link" id="orders-nav" data-toggle="pill" href="#orders-tab" role="tab">
+											Toute vos Commandes 
+										</a>
+									</h4>
+								</div>
+                                <div class="panel-heading">
+									<h4 class="panel-title">
+										<a class="nav-link" id="orders-nav" data-toggle="pill" href="#orders-tab" role="tab">
+											Votre panier
+										</a>
+									</h4>
+								</div>
+								<div class="panel-heading">
+									<h4 class="panel-title">
+										<a class="nav-link" id="orders-nav" data-toggle="pill" href="#orders-tab" role="tab">
+											Changer votre mot de passe 
+										</a>
+									</h4>
+								</div>
+                                <div class="panel-heading">
+									<h4 class="panel-title">
+										<a class="nav-link" id="orders-nav" data-toggle="pill" href="#orders-tab" role="tab">
+										    Changer vos informations personnelles
+										</a>
+									</h4>
+								</div>
+                                <div class="panel-heading">
+									<h4 class="panel-title">
+										<a class="nav-link" id="orders-nav" data-toggle="pill" href="#orders-tab" role="tab">
+										    Ajouter où modifier une addresse de livraison
+										</a>
+									</h4>
+								</div>
+                                <div class="panel-heading">
+									<h4 class="panel-title">
+										<a class="nav-link" id="orders-nav" data-toggle="pill" href="#orders-tab" role="tab">
+										    Ajouter où modifier une addresse de facturation
+										</a>
+									</h4>
+								</div>
+							</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-8">
+                        <div class="tab-pane fade" id="orders-tab" role="tabpanel" aria-labelledby="orders-nav">
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Product</th>
+                                            <th>Date</th>
+                                            <th>Price</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Product Name</td>
+                                            <td>01 Jan 2020</td>
+                                            <td>$99</td>
+                                            <td>Approved</td>
+                                            <td><button class="btn">View</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>Product Name</td>
+                                            <td>01 Jan 2020</td>
+                                            <td>$99</td>
+                                            <td>Approved</td>
+                                            <td><button class="btn">View</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>Product Name</td>
+                                            <td>01 Jan 2020</td>
+                                            <td>$99</td>
+                                            <td>Approved</td>
+                                            <td><button class="btn">View</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                </div>
+            </div>
 </div>
 {% endblock %}
