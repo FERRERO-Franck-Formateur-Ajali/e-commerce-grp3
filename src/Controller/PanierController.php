@@ -19,9 +19,6 @@ class PanierController extends AbstractController
      * @Route("/panier", name="panier")
      */
 
-
-
-
     public function index(PanierRepository $PanierRepository): Response
     {
         $panier = $PanierRepository->findAll();
@@ -43,16 +40,14 @@ class PanierController extends AbstractController
         $manager= $this->getDoctrine()->getManager();    
         $article = new Panier;
 
-
-
         $user = $this->getUser();
         $client = $clientRep->findClientID($user);
         dump($user);
         dump($client);
         $panierCommande = $commandeRep->findCommande($client);
         if ($panierCommande == false) {    
-            /*
             
+            $commande = new Commande;
             $commande->setClient($client)
                      ->setDateheure(new \DateTime('now', new \DateTimeZone('Europe/Paris')))
                      ->setNumeroCommande('a')
@@ -67,13 +62,10 @@ class PanierController extends AbstractController
     
             $manager->persist($article);
             $manager->flush();
-            dump($panierCommande);
-            dump($commande);
-           */
+           
         }
         else{
             $panierCommande = $commandeRep->findCommande($client);
-            dump($panierCommande);
             $article->setArticle($articleRep->findArticleSlug($slug))
             ->setCommande($panierCommande)
             ->setQuantite(1);
@@ -81,19 +73,6 @@ class PanierController extends AbstractController
             $manager->persist($article);
             $manager->flush();
         }
-
-        
-        
-
-
-        /*
-        $article->setArticle($articleRep->findArticleSlug($slug))
-        ->setCommande($panierCommande)
-        ->setQuantite(1);
-
-        $manager->persist($article);
-        $manager->flush();
-       */
         
         return $this->redirectToRoute('panier');
 
