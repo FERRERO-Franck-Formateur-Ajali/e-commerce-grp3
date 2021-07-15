@@ -36,6 +36,39 @@ class PanierRepository extends ServiceEntityRepository
     }
     */
 
+
+    // /**
+    //  * @return Panier[] Returns an array of Panier objects
+    //  */
+    
+    public function findPanierArticle($value)
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.commande = :val')
+            ->setParameter('val', $value)
+            ->orderBy('p.id', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    // /**
+    //  * @return Panier[] Returns an array of Panier objects
+    //  */
+    
+    public function findPanierArt($value)
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.article = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getOneOrNullResult()
+            //->getResult()
+            
+        ;
+    }
+    
+
     /*
     public function findOneBySomeField($value): ?Panier
     {

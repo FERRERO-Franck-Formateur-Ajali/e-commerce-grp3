@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Article{% endblock %}
+{% block title %}Cash-Zone | {{article.nom}}{% endblock %}
 
 {% block body %}
 	<section>
@@ -15,7 +15,6 @@
 						<div class="shipping text-center"><!--shipping-->
 							<img src="{{ asset('assets/images/home/shipping.jpg') }}" alt="" />
 						</div><!--/shipping-->
-						
 					</div>
 				</div>
 				
@@ -31,20 +30,21 @@
 							<div class="product-information"><!--/product-information-->
 								<img src="images/product-details/new.jpg" class="newarrival" alt="" />
 								<h2>{{ article.nom }}</h2>
-                                <a href="{{path('article', {'slug':article.slug})}}">{{article.nom}}</a>
-								<p>Web ID: 1089772</p>
-								
-
+                                
+								<p>Web ID: {{ article.slug}}</p>
 								<p><b>{% if article.stock > 0 %} In Stock {% else %} rupture de stock {% endif %}</b></p>
-                                <p><b>Couleur:</b>{{ article.couleur }}</p>
+                                <p><b>Couleur:</b> {{ article.couleur }}</p>
 								<span>
 									<span>{{ article.prix }}€</span>
-									<label>Quantity:</label>
-									<input type="text"/>
+									{% if not app.user %}
+										<a href="{{path('app_login')}}" class="btn btn-default add-to-cart">
+									{% else %}
+										<a href="{{path('panier_add', {'slug':article.slug})}}">				
+									{% endif %}   
 									<button type="button" class="btn btn-fefault cart">
 										<i class="fa fa-shopping-cart"></i>
-										Add to cart
-									</button>
+										Ajouter au Panier
+									</button></a>
 								</span>
 								<a href=""><img src="images/product-details/share.png" class="share img-responsive"  alt="" /></a>
 							</div><!--/product-information-->

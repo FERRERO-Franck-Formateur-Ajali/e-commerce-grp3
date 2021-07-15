@@ -28,6 +28,7 @@ class ArticleController extends AbstractController
         $form = $this->createForm(CommentaireType::class, $com);
         
         $form->handleRequest($request);
+        
         #dump($articleRep->findArticleCom($nom));
         #dump($clientRep->findClientID(1));
         $user = $this->getUser();
