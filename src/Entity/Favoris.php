@@ -20,53 +20,19 @@ class Favoris
     private $id;
 
     /**
-     * @ORM\OneToMany(targetEntity=Article::class, mappedBy="favoris")
-     */
-    private $Article;
-
-    /**
      * @ORM\OneToOne(targetEntity=Client::class, inversedBy="favoris", cascade={"persist", "remove"})
      */
     private $Client;
 
-    public function __construct()
-    {
-        $this->Article = new ArrayCollection();
-    }
+    /**
+     * @ORM\ManyToOne(targetEntity=Article::class, inversedBy="favoris")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $article;
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    /**
-     * @return Collection|Article[]
-     */
-    public function getArticle(): Collection
-    {
-        return $this->Article;
-    }
-
-    public function addArticle(Article $article): self
-    {
-        if (!$this->Article->contains($article)) {
-            $this->Article[] = $article;
-            $article->setFavoris($this);
-        }
-
-        return $this;
-    }
-
-    public function removeArticle(Article $article): self
-    {
-        if ($this->Article->removeElement($article)) {
-            // set the owning side to null (unless already changed)
-            if ($article->getFavoris() === $this) {
-                $article->setFavoris(null);
-            }
-        }
-
-        return $this;
     }
 
     public function getClient(): ?Client
@@ -77,6 +43,18 @@ class Favoris
     public function setClient(?Client $Client): self
     {
         $this->Client = $Client;
+
+        return $this;
+    }
+
+    public function getArticle(): ?Article
+    {
+        return $this->article;
+    }
+
+    public function setArticle(?Article $article): self
+    {
+        $this->article = $article;
 
         return $this;
     }

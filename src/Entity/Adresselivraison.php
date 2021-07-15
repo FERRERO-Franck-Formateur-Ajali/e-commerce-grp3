@@ -124,7 +124,7 @@ class Adresselivraison
         return $this;
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         return $this->rue.' '.$this->ville.' '.$this->codepostal;
     }

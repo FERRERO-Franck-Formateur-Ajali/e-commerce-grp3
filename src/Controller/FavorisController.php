@@ -29,7 +29,7 @@ class FavorisController extends AbstractController
      * @Route("/favoris/add/{slug}", name="favoris_add")
      */
 
-    public function add(string $slug,ArticleRepository $articleRep,ClientRepository $clientRep,FavorisRepository $FavorisRepository)
+    /*public function add(string $slug,ArticleRepository $articleRep,ClientRepository $clientRep,FavorisRepository $FavorisRepository)
     {
 
         $manager= $this->getDoctrine()->getManager();    
@@ -66,7 +66,7 @@ class FavorisController extends AbstractController
             $manager->flush();
         }
         
-        return $this->redirectToRoute('panier');
+        return $this->redirectToRoute('favoris');
 
     }
 

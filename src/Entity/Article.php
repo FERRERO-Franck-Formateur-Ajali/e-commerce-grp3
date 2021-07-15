@@ -83,7 +83,7 @@ class Article
     private $categorie;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Favoris::class, inversedBy="Article")
+     * @ORM\OneToMany(targetEntity=Favoris::class, mappedBy="article")
      */
     private $favoris;
 
@@ -91,6 +91,7 @@ class Article
     {
         $this->commentaires = new ArrayCollection();
         $this->statut = true;
+        $this->favoris = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -268,14 +269,32 @@ class Article
         return $this;
     }
 
-    public function getFavoris(): ?Favoris
+    /**
+     * @return Collection|Favoris[]
+     */
+    public function getFavoris(): Collection
     {
         return $this->favoris;
     }
 
-    public function setFavoris(?Favoris $favoris): self
+    public function addFavori(Favoris $favori): self
     {
-        $this->favoris = $favoris;
+        if (!$this->favoris->contains($favori)) {
+            $this->favoris[] = $favori;
+            $favori->setArticle($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFavori(Favoris $favori): self
+    {
+        if ($this->favoris->removeElement($favori)) {
+            // set the owning side to null (unless already changed)
+            if ($favori->getArticle() === $this) {
+                $favori->setArticle(null);
+            }
+        }
 
         return $this;
     }
