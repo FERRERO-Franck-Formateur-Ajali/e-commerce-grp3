@@ -63,8 +63,7 @@ class PanierRepository extends ServiceEntityRepository
             ->setParameter('val', $value)
             ->getQuery()
             ->getOneOrNullResult()
-            //->getResult()
-            
+            //->getResult()        
         ;
     }
     

@@ -219,6 +219,28 @@ class PanierController extends AbstractController
 
     }
 
+
+
+    /**
+     * @Route("/panier/delete/{slug}", name="panier_delete")
+     */
+    public function delete(string $slug,Request $request,PanierRepository $panierRep,ArticleRepository $articleRep,ClientRepository $clientRep): Response
+    {
+        
+
+        //Article en cours 
+        $articleDetail = $articleRep->findArticleSlug($slug);
+        $panier = $panierRep->findPanierArt($articleDetail);
+        dump($panier);
+        dump($articleDetail);
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($panier);
+        $entityManager->flush();
+        
+
+        return $this->redirectToRoute('panier');
+    }
+
 }
 
 

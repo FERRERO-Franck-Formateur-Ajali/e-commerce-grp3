@@ -37,7 +37,7 @@
                                                 </div>
                                             </td>
                                             <td>{{pan.quantite * pan.article.prix}}€</td>
-                                            <td><button><i class="fa fa-trash"></i></button></td>
+                                            <td><button><a href="{{path('panier_delete', {'slug':pan.article.slug})}}"><i class="fa fa-trash"></i></a></button></td>
                                         </tr>
                                     {% endfor %}
                                     </tbody>
