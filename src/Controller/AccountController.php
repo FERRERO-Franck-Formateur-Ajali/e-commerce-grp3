@@ -102,7 +102,7 @@ class AccountController extends AbstractController
             $entityManager->persist($client);
             $entityManager->flush();
 
-            return $this->redirectToRoute('account_adressefacturation_show');
+            return $this->redirectToRoute('account');
         }
 
         return $this->render('account/newadressefacturation.html.twig', [
@@ -112,11 +112,11 @@ class AccountController extends AbstractController
     }
 
     /**
-     * @Route("/account/adressefacturation/{id}", name="account_adressefacturation_show", methods={"GET"})
+     * @Route("/account/adressefacturation/show", name="account_adressefacturation_show", methods={"GET"})
      */
     public function showadressefacturation(Adressefacturation $adressefacturation): Response
     {
-        return $this->render('account/showadressefacturation.html.twig', [
+        return $this->render('account/indexadressefacturation.html.twig', [
             'adressefacturation' => $adressefacturation,
         ]);
     }
@@ -132,7 +132,7 @@ class AccountController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('account_adressefacturation_show');
+            return $this->redirectToRoute('account');
         }
 
         return $this->render('account/editadressefacturation.html.twig', [
@@ -152,7 +152,7 @@ class AccountController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('account_adressefacturation_show');
+        return $this->redirectToRoute('account');
     }
 
     /**
@@ -172,7 +172,7 @@ class AccountController extends AbstractController
             $entityManager->persist($client);
             $entityManager->flush();
 
-            return $this->redirectToRoute('account_adresselivraison_show');
+            return $this->redirectToRoute('account');
         }
 
         return $this->render('account/newadresselivraison.html.twig', [
@@ -182,11 +182,11 @@ class AccountController extends AbstractController
     }
 
     /**
-     * @Route("/account/adresselivraison/{id}", name="account_adresselivraison_show", methods={"GET"})
+     * @Route("/account/adresselivraison/show", name="account_adresselivraison_show", methods={"GET"})
      */
     public function showadresselivraison(Adresselivraison $adresselivraison): Response
     {
-        return $this->render('account/showadresselivraison.html.twig', [
+        return $this->render('account/indexadresselivraison.html.twig', [
             'adresselivraison' => $adresselivraison,
         ]);
     }
@@ -202,7 +202,7 @@ class AccountController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('account_adresselivraison_show');
+            return $this->redirectToRoute('account');
         }
 
         return $this->render('account/editadresselivraison.html.twig', [
@@ -222,7 +222,7 @@ class AccountController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('account_adresselivraison_show');
+        return $this->redirectToRoute('account');
     }
 
 
