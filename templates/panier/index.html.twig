@@ -58,9 +58,11 @@
                                     <div class="cart-summary">
                                         <div class="cart-content">
                                             <h1>Récapitulatif de Commande</h1>
-                                            <p>Articles<span>$99</span></p>
-                                            <p>Livraison<span>$1</span></p>
-                                            <h2>Montant total<span>$100</span></h2>
+                                            {% for pan in panier %}
+                                                <p>{{pan.article.nom}}<span>{{pan.article.prix}}€</span></p>
+                                                <p>Livraison<span>Gratuite</span></p>
+                                                <h2>Montant total<span></span></h2>
+                                            {% endfor %}
                                         </div>
                                         <div class="cart-btn">
                                             <button><a href="{{path('panier_valide')}}">Payer</a></button>

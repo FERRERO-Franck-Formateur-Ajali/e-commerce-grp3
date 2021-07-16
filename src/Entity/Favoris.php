@@ -50,11 +50,6 @@ class Favoris
         return $this;
     }
 
-    public function getArticle(): ?Article
-    {
-        return $this->client;
-    }
-
     public function setClient(?Client $client): self
     {
         $this->client = $client;
