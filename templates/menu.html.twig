@@ -1,23 +1,29 @@
 {% for cat in categories() %}
     <div class="panel panel-default">
-        <div class="panel-heading">
-            <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordian" href="#{{cat.nom}}">
-                    <span class="badge pull-right">
-                        <i class="fa fa-plus"></i>
-                    </span>
-                    {{ cat.nom }}
-                </a>
-            </h4>
-        </div>
+        {% if cat.statut == 1 %}
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordian" href="#{{cat.nom}}">
+                        <span class="badge pull-right">
+                            <i class="fa fa-plus"></i>
+                        </span>
+                        
+                            {{ cat.nom }}
+                        
+                    </a>
+                </h4>
+            </div>
+        {% endif %}
         <div id="{{cat.nom}}" class="panel-collapse collapse">
             <div class="panel-body">
-                {% for sub in cat.souscategories %}                 
+                {% for sub in cat.souscategories %} 
+                    {% if sub.statut == 1 %}                
                         <ul>
                             <li>
                                 <a href="{{path('sous_categorie', {'cate':cat.nom,'nom':sub.nom})}}">{{sub.nom}}</a>
                             </li>
-                        </ul>                  
+                        </ul>  
+                    {% endif %}                
                 {% endfor %}
             </div>
         </div>

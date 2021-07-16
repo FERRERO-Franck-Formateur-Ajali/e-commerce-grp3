@@ -59,6 +59,7 @@
 								<li><a href="{{ path('contact') }}"><i class="fa fa-envelope"></i>Contact</a></li>
                                 {% if not app.user %}
 								    <li><a href="{{ path('app_login') }}" class="active"><i class="fa fa-lock"></i> Connexion</a></li>
+                                    <li><a href="{{ path('app_register_user') }}" class="active"><i class="fa fa-lock"></i> S'inscrire</a></li>
                                 {% else %}
                                     <li><a href="{{ path('account') }}"><i class="fa fa-user"></i>Mon compte</a></li>
                                     <li><a href="{{ path('favoris') }}"><i class="fa fa-star"></i> Favoris</a></li>

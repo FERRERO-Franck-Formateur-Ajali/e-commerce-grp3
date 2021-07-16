@@ -19,10 +19,7 @@ class Favoris
      */
     private $id;
 
-    /**
-     * @ORM\OneToOne(targetEntity=Client::class, inversedBy="favoris", cascade={"persist", "remove"})
-     */
-    private $Client;
+
 
     /**
      * @ORM\ManyToOne(targetEntity=Article::class, inversedBy="favoris")
@@ -30,22 +27,17 @@ class Favoris
      */
     private $article;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Client::class, inversedBy="favoris")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $client;
+
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getClient(): ?Client
-    {
-        return $this->Client;
-    }
-
-    public function setClient(?Client $Client): self
-    {
-        $this->Client = $Client;
-
-        return $this;
-    }
 
     public function getArticle(): ?Article
     {
@@ -55,6 +47,18 @@ class Favoris
     public function setArticle(?Article $article): self
     {
         $this->article = $article;
+
+        return $this;
+    }
+
+    public function getClient(): ?Client
+    {
+        return $this->client;
+    }
+
+    public function setClient(?Client $client): self
+    {
+        $this->client = $client;
 
         return $this;
     }

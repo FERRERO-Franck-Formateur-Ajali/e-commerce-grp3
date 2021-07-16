@@ -59,12 +59,18 @@ class Client
      */
     private $commandes;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Favoris::class, mappedBy="client")
+     */
+    private $favoris;
+
     public function __construct()
     {
         $this->adresselivraisons = new ArrayCollection();
         $this->adressefacturations = new ArrayCollection();
         $this->commentaires = new ArrayCollection();
         $this->commandes = new ArrayCollection();
+        $this->favoris = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -253,5 +259,35 @@ class Client
     public function fullName(): string
     {
         return $this->nom.' '.$this->prenom;
+    }
+
+    /**
+     * @return Collection|Favoris[]
+     */
+    public function getFavoris(): Collection
+    {
+        return $this->favoris;
+    }
+
+    public function addFavori(Favoris $favori): self
+    {
+        if (!$this->favoris->contains($favori)) {
+            $this->favoris[] = $favori;
+            $favori->setClient($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFavori(Favoris $favori): self
+    {
+        if ($this->favoris->removeElement($favori)) {
+            // set the owning side to null (unless already changed)
+            if ($favori->getClient() === $this) {
+                $favori->setClient(null);
+            }
+        }
+
+        return $this;
     }
 }

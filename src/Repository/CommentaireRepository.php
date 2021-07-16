@@ -45,7 +45,7 @@ class CommentaireRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('c')
             ->andWhere('c.article = :val')
             ->setParameter('val', $value)
-            ->orderBy('c.id', 'ASC')
+            ->orderBy('c.id', 'DESC')
             ->getQuery()
             ->getResult()
         ;
