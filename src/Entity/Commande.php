@@ -26,6 +26,7 @@ class Commande
 
     /**
      * @ORM\Column(type="integer")
+     * @ORM\JoinColumn(nullable=true)
      */
     private $montant;
 
