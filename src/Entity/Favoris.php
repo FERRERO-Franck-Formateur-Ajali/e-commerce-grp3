@@ -19,6 +19,8 @@ class Favoris
      */
     private $id;
 
+
+
     /**
      * @ORM\OneToOne(targetEntity=Client::class, inversedBy="favoris", cascade={"persist", "remove"})
      */
@@ -35,17 +37,6 @@ class Favoris
         return $this->id;
     }
 
-    public function getClient(): ?Client
-    {
-        return $this->Client;
-    }
-
-    public function setClient(?Client $Client): self
-    {
-        $this->Client = $Client;
-
-        return $this;
-    }
 
     public function getArticle(): ?Article
     {
@@ -55,6 +46,18 @@ class Favoris
     public function setArticle(?Article $article): self
     {
         $this->article = $article;
+
+        return $this;
+    }
+
+    public function getArticle(): ?Article
+    {
+        return $this->client;
+    }
+
+    public function setClient(?Client $client): self
+    {
+        $this->client = $client;
 
         return $this;
     }

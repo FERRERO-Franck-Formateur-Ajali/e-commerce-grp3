@@ -21,15 +21,16 @@
                                         </tr>
                                     </thead>
                                     <tbody class="align-middle">
+                                    {#
                                     {% for fav in favoris %}
                                         <tr>
                                             <td>
                                                 <div class="img">
                                                     <a href="#"><img src="img/product-6.jpg" alt="Image"></a>
-                                                    <p>Product Name</p>
+                                                    <p>{{fav.article.nom}}</p>
                                                 </div>
                                             </td>
-                                            <td>$99</td>
+                                            <td>{{fav.article.prix}}€</td>
                                             <td>
                                                 <div class="qty">
                                                     <button class="btn-minus"><i class="fa fa-minus"></i></button>
@@ -40,7 +41,8 @@
                                             <td><button class="btn-cart">Add to Cart</button></td>
                                             <td><button><i class="fa fa-trash"></i></button></td>
                                         </tr>
-                                    {% endfor %}    
+                                    {% endfor %}
+                                    #}
                                     </tbody>
                                 </table>
                             </div>

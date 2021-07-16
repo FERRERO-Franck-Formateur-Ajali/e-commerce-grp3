@@ -30,7 +30,6 @@ class ArticleRepository extends ServiceEntityRepository
             ->andWhere('c.nom = :cat')
             ->setParameter('nom', $nom)
             ->setParameter('cat', $cate)
-  
             ->getQuery()
             ->getResult()
         ;

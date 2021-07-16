@@ -36,6 +36,18 @@ class FavorisRepository extends ServiceEntityRepository
     }
     */
 
+
+    public function findFavoris($value)
+    {
+        return $this->createQueryBuilder('f')
+            ->andWhere('f.client = :val')
+            ->setParameter('val', $value)
+            ->orderBy('f.id', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     /*
     public function findOneBySomeField($value): ?Favoris
     {

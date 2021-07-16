@@ -15,23 +15,41 @@ class FavorisController extends AbstractController
     /**
      * @Route("/favoris", name="favoris")
      */
-    public function index(FavorisRepository $FavorisRepository): Response
+    public function index(FavorisRepository $favorisRep,ClientRepository $clientRep): Response
     {
-        $favoris = $FavorisRepository->findAll();
-
+        /*
+        $user = $this->getUser();
+        $client = $clientRep->findClientID($user); 
+        $article = $favorisRep->findFavoris($client);
+        */
         return $this->render('favoris/index.html.twig', [
             'controller_name' => 'FavorisController',
-            'favoris' => $favoris,
+            #'favoris' => $article,
         ]);
     }
 
- /**
+    /**
      * @Route("/favoris/add/{slug}", name="favoris_add")
      */
+    public function add(string $slug,ArticleRepository $articleRep,ClientRepository $clientRep)
+    {
 
-    public function add(string $slug,ArticleRepository $articleRep,ClientRepository $clientRep,FavorisRepository $FavorisRepository)
-    {   
+        $manager= $this->getDoctrine()->getManager();    
+        
+        // Cherche client 
+        $user = $this->getUser();
+        $client = $clientRep->findClientID($user); 
+        //Article en cours 
+        $articleDetail = $articleRep->findArticleSlug($slug);
+
+
+        $favoris = new Favoris;
+        $favoris->setClient($client)
+                    ->setArticle($articleDetail);
+        $manager->persist($favoris);
+        $manager->flush();   
+             
         return $this->redirectToRoute('favoris');
-    }
 
+    }
 }

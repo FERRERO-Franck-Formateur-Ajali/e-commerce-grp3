@@ -24,20 +24,20 @@
                                         <tr>
                                             <td>
                                                 <div class="img">
-                                                    <a href="#"><img src="img/product-1.jpg" alt="Image"></a>
+                                                    <a href="{{path('article', {'slug':pan.article.slug})}}"><img src="{{ asset('assets/images/shop/' ~ pan.article.image ~ '') }}" alt="Image"></a>
                                                     <p>{{pan.article.nom}}</p>
                                                 </div>
                                             </td>
                                             <td>{{pan.article.prix}}€</td>
                                             <td>
                                                 <div class="qty">
-                                                    <button class="btn-minus"><i class="fa fa-minus"></i></button>
+                                                    <button class="btn-minus"><a href="{{path('panier_del', {'slug':pan.article.slug})}}"><i class="fa fa-minus"></i></a></button>
                                                     <input type="text" value="{{pan.quantite}}">
-                                                    <button class="btn-plus"><i class="fa fa-plus"></i></button>
+                                                    <button class="btn-plus"><a href="{{path('panier_add', {'slug':pan.article.slug})}}"><i class="fa fa-plus"></i></a></button>
                                                 </div>
                                             </td>
                                             <td>{{pan.quantite * pan.article.prix}}€</td>
-                                            <td><button><i class="fa fa-trash"></i></button></td>
+                                            <td><button><a href="{{path('panier_delete', {'slug':pan.article.slug})}}"><i class="fa fa-trash"></i></a></button></td>
                                         </tr>
                                     {% endfor %}
                                     </tbody>
@@ -63,7 +63,7 @@
                                             <h2>Montant total<span>$100</span></h2>
                                         </div>
                                         <div class="cart-btn">
-                                            <button>Payer</button>
+                                            <button><a href="{{path('panier_valide')}}">Payer</a></button>
                                         </div>
                                     </div>
                                 </div>
