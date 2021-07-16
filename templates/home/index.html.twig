@@ -116,13 +116,8 @@
                 <div class="col-sm-9 padding-right">
                     <div class="features_items">
                         <!--features_items-->
-<<<<<<< Updated upstream
-                        <h2 class="title text-center">Features Items</h2>
-                        {% for art in page %}
-=======
                         <h2 class="title text-center">Tous nos produits</h2>
-                        {% for art in article %}
->>>>>>> Stashed changes
+                        {% for art in page %}
                             <div class="col-sm-4">
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
@@ -156,22 +151,13 @@
                                         <ul class="nav nav-pills nav-justified">
                                             <li>
                                                 <a href="{{path('favoris_add', {'slug':art.slug})}}">
-<<<<<<< Updated upstream
-                                                    <i class="fa fa-plus-square"></i>Add to wishlist</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="fa fa-plus-square"></i>Add to compare</a>
-=======
                                                     <i class="fa fa-plus-square"></i>Ajouter en favoris</a>
->>>>>>> Stashed changes
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                         {% endfor %}
-<<<<<<< Updated upstream
                         {{ knp_pagination_render(page, 'base/pagination.html.twig')}}
 
 
@@ -180,9 +166,6 @@
 
 
 
-=======
-                    </div>
->>>>>>> Stashed changes
                 </div>
             </div>
         </div>
