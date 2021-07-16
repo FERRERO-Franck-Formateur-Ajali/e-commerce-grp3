@@ -20,7 +20,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 
-class ArticleType extends AbstractType
+class EditarticleType extends AbstractType
 {
     private $categorie;
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -35,22 +35,6 @@ class ArticleType extends AbstractType
             ->add('prix')
             // ->add('slug')
             ->add('promotion', NumberType::class);
-                if($options['edition'] === 'new'){
-                    $builder
-                        ->add('categorie', EntityType::class,[
-                            'class' => Categorie::class,
-                            'choice_label' => 'nom',
-                            'choice_value' => 'id',
-                            'placeholder' => 'selectionner une option',
-                        ])
-                        ->add('souscategorie', ChoiceType::class,[
-                            'placeholder' => 'selectionner une option',
-                            'attr' => [
-                                'disabled' => true
-                            ],        
-                        ]);
-                }
-                else{
                     $this->categorie = $options['categorie'];
                     $builder
                         ->add('categorie', EntityType::class,[
@@ -72,8 +56,6 @@ class ArticleType extends AbstractType
                                 ->setParameter('categorie', $this->categorie);
                         },
                     ]);    
-                };
-            
             // Recupére les sous catégorie a partir de la catégorie sélectionner
             $addSousCategoriesForm = function (FormInterface $form, $categorie) {
                 if (!empty($categorie)) {
@@ -91,6 +73,9 @@ class ArticleType extends AbstractType
                                     ->setParameter('categorie', $this->categorie);
                            },
                            'placeholder' => 'Sélectionner une marque',
+                           'attr' => [
+                            'disabled' => true
+                        ],  
                         ]);  
                 }
             };

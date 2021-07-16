@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Adressefacturation{% endblock %}
+
+{% block body %}
+    <h1>modifier une Adresse de facturation</h1>
+
+    {{ include('account/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('account') }}">Revenir au menu</a>
+
+    {{ include('account/_delete_form.html.twig') }}
+{% endblock %}

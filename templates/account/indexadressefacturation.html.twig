@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Adressefacturation index{% endblock %}
+
+{% block body %}
+    <h1>Adressefacturation index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Telephone</th>
+                <th>Rue</th>
+                <th>Codepostal</th>
+                <th>Ville</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for adressefacturation in adressefacturations %}
+            <tr>
+                <td>{{ adressefacturation.id }}</td>
+                <td>{{ adressefacturation.nom }}</td>
+                <td>{{ adressefacturation.telephone }}</td>
+                <td>{{ adressefacturation.rue }}</td>
+                <td>{{ adressefacturation.codepostal }}</td>
+                <td>{{ adressefacturation.ville }}</td>
+                <td>
+                    <a href="{{ path('account_adressefacturation_show', {'id': adressefacturation.id}) }}">show</a>
+                    <a href="{{ path('account_adressefacturation_edit', {'id': adressefacturation.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">Aucun resultat trouver</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('adressefacturation_new') }}">Ajouter une nouvelle adresse de facturation</a>
+{% endblock %}

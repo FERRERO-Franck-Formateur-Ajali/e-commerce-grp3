@@ -13,23 +13,38 @@
         $(document).ready(function() {
             $(document).on("change", "#article_categorie", function() {
                 disabledSouscategorie();
+                // $( 'form[name="article"]' ).children('input').each(function(){
+                //     console.log(this.name);
+                // });
                 var categorie = $('#article_categorie').val();
+                console.log(categorie);
+                // var image = $('#article_image').val();
+                // var image = $('#article_image').val();
                 if (categorie !== '') {
                     var $form = $(this).closest('form');
-                    var data_categorie = {};
-                    data_categorie[$('#article_categorie').attr('name')] = categorie;
-                    console.log($form);
+                    var datas = {};
+                    $('form[name="article"] input, form[name="article"] select, form[name="article"] textarea').each(function(index){
+                        var input = $(this);
+                        if(input.attr('name') != 'article[_token]'){
+                            console.log(input.attr('name'));
+                            datas[$('#'+input.attr('id')).attr('name')] = input.attr('value');
+                        }
+                    });
+                    // datas[$('#article_categorie').attr('name')] = categorie;
+                    // datas[$('#article_image').attr('name')] = image;
+                    // console.log($form['form'][0]);
                     $.ajax({
                         url: $form.attr('action'),
                         type: $form.attr('method'),
-                        data: data_categorie,
-                        success: function(html) {           
+                        data: datas,
+                        success: function(html) {  
+                            console.log($(html).find('#article_categorie'));         
                             $('#article_souscategorie').replaceWith(
                                 $(html).find('#article_souscategorie')
                             );
                         },
                         error: function(html) {
-                            console.log(html);
+                            // console.log(html);
                         }
                     });
                 }

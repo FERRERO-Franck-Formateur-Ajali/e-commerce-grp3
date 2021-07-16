@@ -19,6 +19,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use App\Form\EditarticleType;
 
 class ArticleCrudController extends AbstractCrudController
 {
@@ -31,7 +32,6 @@ class ArticleCrudController extends AbstractCrudController
     
     /**
      * @Route("/admin/new/article", name="admin_new_article")
-     * @Route("/admin/new/article/{id}", name="admin_edit_article")
      */
     public function newArticle(Request $request, CategorieRepository $categorieRepo, ?Article $article): Response
     {
@@ -45,6 +45,43 @@ class ArticleCrudController extends AbstractCrudController
         }
 
         $form = $this->createForm(ArticleType::class, $article, [
+            'edition' => $edition,
+            'categorie' => $categorie
+        ]);
+        $form->handleRequest($request);
+       
+        if ($form->isSubmitted() && $form->isValid()) { 
+            $manager->persist($article);
+            $manager->flush();
+
+            $url = $this->adminUrlGenerator
+                ->setController(ArticleCrudController::class)
+                ->setAction(Action::INDEX)
+                ->generateUrl();
+
+            return new RedirectResponse($url);
+        }
+
+        return $this->render('admin/article/new.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
+     /**
+     * @Route("/admin/edit/article/{id}", name="admin_edit_article")
+     */
+    public function editArticle(Request $request, CategorieRepository $categorieRepo, ?Article $article): Response
+    {
+        $categorie = null;
+        $manager = $this->getDoctrine()->getManager();
+        $edition = $article === null ? 'new' : 'edit';
+        $article = $article === null ? new Article() : $article;
+
+        if($article->getSouscategorie() !== null){
+            $categorie = $categorieRepo->findCategorieBySouscategorie($article->getSouscategorie());
+        }
+
+        $form = $this->createForm(EditarticleType::class, $article, [
             'edition' => $edition,
             'categorie' => $categorie
         ]);
