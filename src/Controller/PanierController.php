@@ -224,19 +224,42 @@ class PanierController extends AbstractController
     /**
      * @Route("/panier/delete/{slug}", name="panier_delete")
      */
-    public function delete(string $slug,Request $request,PanierRepository $panierRep,ArticleRepository $articleRep,ClientRepository $clientRep): Response
+    public function delete(string $slug,ArticleRepository $articleRep,PanierRepository $panierRep): Response
     {
         
 
         //Article en cours 
         $articleDetail = $articleRep->findArticleSlug($slug);
         $panier = $panierRep->findPanierArt($articleDetail);
-        dump($panier);
-        dump($articleDetail);
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->remove($panier);
         $entityManager->flush();
         
+
+        return $this->redirectToRoute('panier');
+    }
+
+
+        /**
+     * @Route("/panier/valide", name="panier_valide")
+     */
+    public function valide(ClientRepository $clientRep,CommandeRepository $commandeRep): Response
+    {
+        
+
+        //Article en cours 
+        $manager= $this->getDoctrine()->getManager();    
+        // Cherche client 
+        $user = $this->getUser();
+        $client = $clientRep->findClientID($user);
+        //Article en cours 
+
+        // cherche la commande --- Commande null
+        $panierCommande = $commandeRep->findCommande($client);
+    
+        $panierCommande->setStatut(true);
+        $manager->persist($panierCommande);
+        $manager->flush();
 
         return $this->redirectToRoute('panier');
     }

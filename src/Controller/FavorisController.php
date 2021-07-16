@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Favoris;
 use App\Repository\ClientRepository;
 use App\Repository\ArticleRepository;
 use App\Repository\FavorisRepository;
@@ -17,10 +18,37 @@ class FavorisController extends AbstractController
     public function index(FavorisRepository $FavorisRepository): Response
     {
         $favoris = $FavorisRepository->findAll();
+        
 
         return $this->render('favoris/index.html.twig', [
             'controller_name' => 'FavorisController',
             'favoris' => $favoris,
         ]);
+    }
+
+
+     /**
+     * @Route("/favoris/add/{slug}", name="favoris_add")
+     */
+    public function add(string $slug,ArticleRepository $articleRep,ClientRepository $clientRep)
+    {
+
+        $manager= $this->getDoctrine()->getManager();    
+        
+        // Cherche client 
+        $user = $this->getUser();
+        $client = $clientRep->findClientID($user); 
+        //Article en cours 
+        $articleDetail = $articleRep->findArticleSlug($slug);
+
+
+        $favoris = new Favoris;
+        $favoris->setClient($client)
+                    ->setArticle($articleDetail);
+        $manager->persist($favoris);
+        $manager->flush();   
+             
+        return $this->redirectToRoute('favoris');
+
     }
 }

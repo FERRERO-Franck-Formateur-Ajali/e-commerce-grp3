@@ -20,7 +20,7 @@ class HomeController extends AbstractController
         
         
         $art = $this->getDoctrine()->getRepository(Article::class)->findAll();
-
+        
         #dump($nom);
         #dump($art);
         return $this->render('home/index.html.twig', [
