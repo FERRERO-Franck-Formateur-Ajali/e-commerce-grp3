@@ -34,9 +34,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('adresselivraison_index') }}">back to list</a>
+    <a href="{{ path('account') }}">back to list</a>
 
-    <a href="{{ path('adresselivraison_edit', {'id': adresselivraison.id}) }}">edit</a>
+    <a href="{{ path('account_adresselivraison_edit', {'id': adresselivraison.id}) }}">edit</a>
 
-    {{ include('adresselivraison/_delete_form.html.twig') }}
+    {{ include('account/_delete_formadresselivraison.html.twig') }}
 {% endblock %}
